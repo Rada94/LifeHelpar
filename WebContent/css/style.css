@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+body{
+	background-color: #e4e4e4;
+	
+	
+}
+
+.tam{
+	heigth:90px;
+	border-radius: 5px;
+  	width: 250px;
+  	background-color: #454A57;
+  	color:white;
+  	margin-left: 10%;
+  	margin-top: 9.3%;
+  	
+}
+
+.tam:hover{
+	background-color: #c8d5b9;
+	color:black;
+	
+}
+
+.tam1{
+	margin-top:3px;
+	heigth:90px;
+	border-radius: 5px;
+  	width: 250px;
+  	color:#000;
+  	background-color: #32343d;
+  	
+  	
+}
+
+.tbutton{
+	heigth:90px;
+	border-radius: 5px;
+  	width: 250px;
+  	color:black;
+  	background-color: #548a48;
+  	
+}
+
+.rbutton{
+	display:inline;
+	color: black;
+}
+
+.formato{
+	background-color:#68b0ab;
+	height: 300px;
+	width: 300px;
+	margin-left: 40%;
+	margin-top: 9%;
+	border-radius: 5px;
+}
+
+#margen{
+	border: 1px solid red;
+}
