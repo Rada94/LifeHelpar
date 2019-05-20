@@ -38,7 +38,7 @@ public class ImgPac extends HttpServlet {
 		
 		//String sql = "INSERT INTO productos VALUES (";
 		
-		//Declaramos e inicializamos los objetos de conexiï¿½n
+		//Declaramos e inicializamos los objetos de conexión
 		Connection conn=null;
 		Statement stmnt =null;
 		int rs = 0;//clase para tomar toda la tabla
@@ -60,7 +60,7 @@ public class ImgPac extends HttpServlet {
 
 					
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			out.println("<font color='red'>Elemento creado con ï¿½xito</font>");
+			out.println("<font color='red'>Elemento creado con éxito</font>");
 			out.println("<a href=http://localhost:8080/MVCPractica10/index.jsp>index</a>");
 			dispatcher.include(request, response);
 					
@@ -70,7 +70,7 @@ public class ImgPac extends HttpServlet {
 					e.printStackTrace();
 		}
 		finally {
-					//Cerramos la conexiï¿½n y colocamos los objetos a disposiciï¿½n del garbage collector
+					//Cerramos la conexión y colocamos los objetos a disposición del garbage collector
 			try {
 						
 				stmnt.close();
