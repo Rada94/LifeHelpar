@@ -14,13 +14,13 @@ colonia_doctor text NOT NULL,	/*referencia para asignar el la colonia del doctor
 telefonop_doctor varchar (20) NOT NULL,	/*referencia para asignar telefono principal de contacto con el doctor, es de tipo varchar, no puede estar vacio y puede ser modificable*/
 telefonos_doctor varchar (20),	/*referencia para asignar telefono secundario de contacto con el doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
 email_doctor text NOT NULL,		/*referencia para asignar email  del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
-cprefnombre_doctor text NOT NULL,	/*referencia para asignar el nombre del contacto de referencia principal del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
-cprefapellidos_doctor text NOT NULL,	/*referencia para asignar los apellidos del contacto de referencia principal del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
+cprefnombre_doctor text NOT NULL,	/*referencia para asignar el nombre completo del contacto de referencia principal del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
+/* cprefapellidos_doctor text NOT NULL,	/*referencia para asignar los apellidos del contacto de referencia principal del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
 cprefparentesco_doctor text NOT NULL,	/*referencia para asignar el parentesco del contacto de referencia principal con el doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
 cpreftelprincipal_doctor varchar (20) NOT NULL,	/*referencia para asignar el tlefono de contacto principal del contacto de referencia principal del doctor, es de tipo varchar, no puede estar vacio y puede ser modificable*/
 cpreftelsecundario_doctor varchar (20), /*referencia para asignar el telefono de contacto secundario del contacto de referencia principal del doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
-csrefnombre_doctor text,	/*referencia para asignar el nombre del contacto de referencia secundario del doctor, es de tipo text, puede estar vacio y puede ser modificable*/
-csrefapellidos_doctor text,	/*referencia para asignar los apellidos del contacto de referencia secundario del doctor, es de tipo text, puede estar vacio y puede ser modificable*/
+csrefnombre_doctor text,	/*referencia para asignar el nombre completo del contacto de referencia secundario del doctor, es de tipo text, puede estar vacio y puede ser modificable*/
+/* csrefapellidos_doctor text,	/*referencia para asignar los apellidos del contacto de referencia secundario del doctor, es de tipo text, puede estar vacio y puede ser modificable*/
 csrefparentesco_doctor text,	/*referencia para asignar el parentesco del contacto de referencia secundario con el doctor, es de tipo text, puede estar vacio y puede ser modificable*/
 csreftelprincipal_doctor varchar (20),	/*referencia para asignar el telefono de contacto principal del contacto de referencia secundario del doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
 csreftelsecundario_doctor varchar (20), /*referencia para asignar el tlefono de contacto secundario del contacto de referencia secundario del doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
