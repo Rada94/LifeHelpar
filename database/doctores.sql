@@ -24,4 +24,4 @@ csrefapellidos_doctor text,	/*referencia para asignar los apellidos del contacto
 csrefparentesco_doctor text,	/*referencia para asignar el parentesco del contacto de referencia secundario con el doctor, es de tipo text, puede estar vacio y puede ser modificable*/
 csreftelprincipal_doctor varchar (20),	/*referencia para asignar el telefono de contacto principal del contacto de referencia secundario del doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
 csreftelsecundario_doctor varchar (20), /*referencia para asignar el tlefono de contacto secundario del contacto de referencia secundario del doctor, es de tipo varchar, puede estar vacio y puede ser modificable*/
-primary key (id_doctores))ENGINE=InnoDB;
+primary key (id_doctores))ENGINE=InnoDB; /*Test 1*/
