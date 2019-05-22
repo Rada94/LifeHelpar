@@ -5,6 +5,7 @@ id_administrador int auto_increment not null UNIQUE,     /*referencia para asign
 nombre_administrador text NOT NULL,	 /*referencia para asignar los nombres de los Administradores, es de tipo text y no puede estar vacio*/
 apellidop_administrador text NOT NULL,     /*referencia para asignar el apellido paterno de los Administradores, es de tipo text y no puede estar vacio*/
 apellidom_administrador text NOT NULL,     /*referencia para asignar el apellido materno de los Administradores, es de tipo text y no puede estar vacio*/
+puesto_administrador text NOT NULL, /*referencia para asignar el puesto del administrativo (secretaria, director, etc), es de tipo text, puede ser modificado y es not null*/
 fnacimiento_administrador date NOT NULL,     /*referencia para asignar fecha de nacimiento de los Administradores, es de tipo date y no puede estar vacio, puede ser modificado*/
 edad_administrador text NOT NULL,	/*referencia para asignar la edad de los Administradores, es de tipo int y no puede estar vacio, puede ser modificado(se podria obtener de forma automatica con la fecha de nacimiento???*/      
 genero_administrador varchar(12) NOT NULL,	/*referencia para asignar el sexo de los Administradores, es de tipo varchar,no puede estar vacio(femenino, masculino) y no puede ser modificado*/
@@ -17,12 +18,12 @@ cprefnombre_administrador text NOT NULL, /*referencia para asignar el nombre del
 cprefapellidos_administrador text NOT NULL, /*referencia para asignar apellidos del contacto de referencia para Administrador, es de tipo text, no puede estar vacio y puede ser modificado*/
 cprefparentesco_administrador text NOT NULL, /*referencia para asignar parentesco del contacto de referencia para Administrador, es de tipo text, no puede estar vacio y puede ser modificado*/
 cpreftelprincipal_administrador varchar(20) NOT NULL, /*referencia para asignar el telefono de contacto principal del contacto de referencia principal para Administrador, es de tipo varchar, no puede estar vacio y puede ser modificado*/
-cpreftelsecundario_administrador varchar(20) NOT NULL, /*referencia para asignar el telefono de contacto secundario del contacto de referencia principal para Administrador, es de tipo varchar, no puede estar vacio y puede ser modificado*/
+cpreftelsecundario_administrador varchar(20), /*referencia para asignar el telefono de contacto secundario del contacto de referencia principal para Administrador, es de tipo varchar, puede estar vacio y puede ser modificado*/
 csrefnombre_administrador text, /*referencia para asignar el nombre del contacto de referencia secundario de el Administrador, es de tipo text, puede estar vacio y puede ser modificado*/
 csrefapellidos_administrador text, /*referencia para asignar apellidos del contacto de referencia secundario para Administrador, es de tipo text, puede estar vacio y puede ser modificado*/
 csresfparentesco_administrador text, /*referencia para asignar parentesco del contacto de referencia secundario para Administrador, es de tipo text, puede estar vacio y puede ser modificado*/
-csreftelprincipal_administrador varchar(20) NOT NULL, /*referencia para asignar el telefono de contacto principal del contacto de referencia secundario para Administrador, es de tipo varchar, puede estar vacio y puede ser modificado*/
-csreftelsecundario_administrador varchar(20) NOT NULL, /*referencia para asignar el telefono de contacto secundario del contacto de referencia secundario para Administrador, es de tipo varchar, puede estar vacio y puede ser modificado*/ 
+csreftelprincipal_administrador varchar(20), /*referencia para asignar el telefono de contacto principal del contacto de referencia secundario para Administrador, es de tipo varchar, puede estar vacio y puede ser modificado*/
+csreftelsecundario_administrador varchar(20), /*referencia para asignar el telefono de contacto secundario del contacto de referencia secundario para Administrador, es de tipo varchar, puede estar vacio y puede ser modificado*/ 
 primary key (id_administrador))ENGINE=InnoDB;
 
 
