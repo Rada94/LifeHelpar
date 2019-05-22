@@ -2,24 +2,31 @@ create database if not exists LifeHelper;
 use LifeHelper;
 create table if not exists pacientes(
 id_paciente int not null auto_increment unique primary key,
-nombre_paciente text not null,
-apellidop_paciente text not null,
-apellidom_paciente text not null,
-fnacimiento_paciente date not null,
-edad_paciente int not null,
-genero_paciente varchar(12) not null,
+nombre_paciente text not null, /*Nombre o nombres del paciente*/
+apellidop_paciente text not null, /*Apellido paterno del paciente*/
+apellidom_paciente text not null, /*Apellido materno del paciente*/
+fnacimiento_paciente date not null, /*Fecha de nacimiento del paciente*/
+edad_paciente int not null, /*Edad del paciente*/
+genero_paciente varchar(12) not null, /*Genero del paciente*/
 calleynumero_paciente text not null, /*Calle y numero de casa del paciente*/
-colonia_paciente text not null,
-celular_paciente varchar(20) not null,
-telefono_opcinal_paciente varchar(20),
-email_paciente text not null unique,
+colonia_paciente text not null, /*Colonia donde vive el paciente*/
+ciudad_paciente text not null, /*Ciudad donde viene el paciente*/
+estado_paciente text not null, /*Estado donde vive el paciente*/
+celular_paciente varchar(20) not null, /*Numero de celular*/
+telefono_opcinal_paciente varchar(20), /*Numero de telefono opcional*/
+email_paciente text not null unique, /*Correo electrónico del paciente*/
 status_paciente text not null, /*Status del paciente*/
 expediente_paciente longtext not null, /*Comentarios de doctor al paciente*/
 fcitas_paciente datetime not null, /*Fecha y hora del cometario del doctor al paciente*/
-crefnombre_paciente text not null, /*Nombre del referenciado del paciente*/
-crefparentezco_paciente text not null, /*Referencia Familiar*/
-telrefparentezco_paciente text not null, /*Telefono del familiar*/
-crefparentezco_opcional_paciente text, /*Referencia opcional*/
-telrefparentezco_opcional_paciente text, /*Telefono de la referencia opcional*/
-telefonoref_paciente text not null /*Numero de telefono del referenciado del paciente*/
+cprefnombre_paciente text not null, /*Nombre compelto del referenciado principal*/
+cprefparentesco_paciente text not null, /*Tipo de persona para la referencia principal*/
+cpreftelprincipal_paciente varchar(20) not null, /*Telefono de referencia principal del paciente*/
+cpreftelsecundario_paciente varchar(20), /*Telefono de referencia opcional del paciente*/
+csrefnombre_paciente text, /*Nombre compelto del referenciado principal*/
+csrefparentesco_paciente text, /*Tipo de persona para la referencia principal*/
+csreftelprincipal_paciente varchar(20), /*Telefono de referencia secundaria principal del paciente*/
+csreftelsecundario_paciente varchar(20), /*Telefono de referencia secundaria opcional del paciente*/
+inicioatencion_paciente datetime not null, /*Cuando se unio al servicio*/
+finatencion_paciente datetime, /*Cuando dejo el servicio*/
+motivofin_paciente text /*Motivo de fin de la atencion*/
 );
