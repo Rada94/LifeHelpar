@@ -1,7 +1,7 @@
 create database if not exists LifeHelper;
 use LifeHelper;
 create table if not exists pacientes(
-id_paciente int not null auto_increment unique primary key,
+id_paciente int not null auto_increment unique,
 nombre_paciente text not null, /*Nombre o nombres del paciente*/
 apellidop_paciente text not null, /*Apellido paterno del paciente*/
 apellidom_paciente text not null, /*Apellido materno del paciente*/
@@ -14,7 +14,8 @@ ciudad_paciente text not null, /*Ciudad donde viene el paciente*/
 estado_paciente text not null, /*Estado donde vive el paciente*/
 celular_paciente varchar(20) not null, /*Numero de celular*/
 telefono_opcinal_paciente varchar(20), /*Numero de telefono opcional*/
-email_paciente text not null unique, /*Correo electrónico del paciente*/
+email_paciente varchar(255) not null unique, /*Correo electrónico del paciente*/
+pass_paciente varchar(8) not null, 
 status_paciente text not null, /*Status del paciente*/
 expediente_paciente longtext not null, /*Comentarios de doctor al paciente*/
 fcitas_paciente datetime not null, /*Fecha y hora del cometario del doctor al paciente*/
@@ -28,5 +29,11 @@ csreftelprincipal_paciente varchar(20), /*Telefono de referencia secundaria prin
 csreftelsecundario_paciente varchar(20), /*Telefono de referencia secundaria opcional del paciente*/
 inicioatencion_paciente datetime not null, /*Cuando se unio al servicio*/
 finatencion_paciente datetime, /*Cuando dejo el servicio*/
-motivofin_paciente text /*Motivo de fin de la atencion*/
-);
+motivofin_paciente text, /*Motivo de fin de la atencion*/
+primary key(id_paciente))ENGINE=InnoDB;
+
+DELIMITER //
+CREATE TRIGGER paciente_to_login AFTER INSERT ON pacientes FOR EACH ROW
+BEGIN
+	INSERT INTO login (emails, passwords) VALUES (NEW.email_pacientes, NEW.pass_paciente);
+END; //
