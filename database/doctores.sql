@@ -5,9 +5,7 @@ id_doctores int auto_increment not null UNIQUE,		/*referencia para asignar de fo
 nombre_doctor text NOT NULL,		/*referencia para asignar los nombres del doctor, es de tipo text y no puede estar vacio*/
 apellidop_doctor text NOT NULL,	/*referencia para asignar apellido paterno del doctor, es de tipo text y no puede estar vacio*/
 apellidom_doctor text NOT NULL,	/*referencia para asignar apellido materno del doctor, es de tipo text y no puede estar vacio*/
-fnacimiento_doctor date NOT NULL,	/*referencia para asignar fecha de nacimiento del doctor, es de tipo date y no puede estar vacio, puede ser modificable*/
 cedula_doctor varchar(40) NOT NULL UNIQUE, /*referencia para asignar la cedula del doctor, es de tipo varchar, no puede estar vacio, es unica y no puede ser modificable*/
-edad_doctor int NOT NULL,	/*referencia para asignar la edad del doctor, es de tipo int, no puede estar vacio y puede ser modificable(se podria obtener de forma automatica con la fecha de nacimiento?)*/
 genero_doctor varchar(12) NOT NULL,	/*referencia para asignar el sexo del doctor, es de tipo varchar, no puede estar vacio(femenino, masculino) y no puede ser modificable*/
 domicilio_doctor text NOT NULL,	/*referencia para asignar el domicilio (calle y numero) del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
 colonia_doctor text NOT NULL,	/*referencia para asignar el la colonia del doctor, es de tipo text, no puede estar vacio y puede ser modificable*/
@@ -30,5 +28,5 @@ primary key (id_doctores))ENGINE=InnoDB; /*Test 1*/
 DELIMITER //
 CREATE TRIGGER doctor_to_login AFTER INSERT ON doctores FOR EACH ROW
 BEGIN
-	INSERT INTO login (emails, passwords) VALUES (NEW.email_doctor, NEW.pass_doctor);
+	INSERT INTO login (perfil, emails, passwords) VALUES ("Doctor", NEW.email_doctor, NEW.pass_doctor);
 END; //

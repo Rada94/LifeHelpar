@@ -6,8 +6,6 @@ nombre_administrativo text NOT NULL,	 /*referencia para asignar los nombres de l
 apellidop_administrativo text NOT NULL,     /*referencia para asignar el apellido paterno de los administrativo, es de tipo text y no puede estar vacio*/
 apellidom_administrativo text NOT NULL,     /*referencia para asignar el apellido materno de los administrativo, es de tipo text y no puede estar vacio*/
 puesto_administrativo text NOT NULL, /*referencia para asignar el puesto del administrativo (secretaria, director, etc), es de tipo text, puede ser modificado y es not null*/
-fnacimiento_administrativo date NOT NULL,     /*referencia para asignar fecha de nacimiento de los administrativo, es de tipo date y no puede estar vacio, puede ser modificado*/
-edad_administrativo text NOT NULL,	/*referencia para asignar la edad de los administrativo, es de tipo int y no puede estar vacio, puede ser modificado(se podria obtener de forma automatica con la fecha de nacimiento???*/      
 genero_administrativo varchar(12) NOT NULL,	/*referencia para asignar el sexo de los administrativo, es de tipo varchar,no puede estar vacio(femenino, masculino) y no puede ser modificado*/
 domicilio_administrativo text NOT NULL,	/*referencia para asignar el domicilio(calle, numero) de los administrativo, es de tipo text,no puede estar vacio y puede ser modificado*/
 colonia_administrativo text NOT NULL,	/*referencia para asignar la colonia de los administrativo, es de tipo text,no puede estar vacio y puede ser modificado*/
@@ -31,7 +29,7 @@ PRIMARY KEY(id_administrativo)
 DELIMITER //
 CREATE TRIGGER admin_to_login AFTER INSERT ON administrativos FOR EACH ROW
 BEGIN
-	INSERT INTO login (emails, passwords) VALUES (NEW.email_administrativo, NEW.pass_administrativo);
+	INSERT INTO login (perfil, emails, passwords) VALUES ("Administrativo", NEW.email_administrativo, NEW.pass_administrativo);
 END; //
 
 

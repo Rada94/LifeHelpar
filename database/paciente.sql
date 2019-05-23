@@ -5,8 +5,6 @@ id_paciente int not null auto_increment unique,
 nombre_paciente text not null, /*Nombre o nombres del paciente*/
 apellidop_paciente text not null, /*Apellido paterno del paciente*/
 apellidom_paciente text not null, /*Apellido materno del paciente*/
-fnacimiento_paciente date not null, /*Fecha de nacimiento del paciente*/
-edad_paciente int not null, /*Edad del paciente*/
 genero_paciente varchar(12) not null, /*Genero del paciente*/
 calleynumero_paciente text not null, /*Calle y numero de casa del paciente*/
 colonia_paciente text not null, /*Colonia donde vive el paciente*/
@@ -35,5 +33,5 @@ primary key(id_paciente))ENGINE=InnoDB;
 DELIMITER //
 CREATE TRIGGER paciente_to_login AFTER INSERT ON pacientes FOR EACH ROW
 BEGIN
-	INSERT INTO login (emails, passwords) VALUES (NEW.email_pacientes, NEW.pass_paciente);
+	INSERT INTO login (perfil, emails, passwords) VALUES ("Paciente", NEW.email_paciente, NEW.pass_paciente);
 END; //
