@@ -3602,8 +3602,8 @@ li {
 }
 
 .formato{
-	background-color:#68b0ab;
-	height: 420px;
+	background-color:#ffffff;
+	height: 450px;
 	width: 300px;
 	margin-left: 40%;
   margin-top: 9%;
@@ -3659,12 +3659,12 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 12px 0 6px 0;
 }
 
 /* Avatar image */
 img.avatar {
-  width: 40%;
+  width: 180px;
   border-radius: 50%;
 }
 

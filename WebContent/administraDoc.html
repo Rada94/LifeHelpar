@@ -50,7 +50,7 @@
                               <a href="administraPaciente.html">Administrar Pacientes</a> <!--Se conecta con el CRUD Administrador-->
                         </li>
                         <li>
-                          <a href="#">Administrar Citas</a> 
+                          <a href="administraCitas.html">Administrar Citas</a> 
                     </li>
                     <li class="active">
                       <a href="administra.html">Principal</a> <!--Se conecta con el CRUD Administrador-->
@@ -124,6 +124,8 @@
 
 <!--====  End of Page Slider  ====-->
 
+<!--====  CRUD para administrar al Doctor  ====-->
+
 
 <div class="formato" id = "irCrudDoc">
 	
@@ -132,23 +134,18 @@
             <p>Crear Doctor</p>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            
-            
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="CreateDoc" method="post" enctype="multipart/form-data">
                     <input type="text" name="nombre_doc"  id="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
                     <input type="text" name="apellido_doc"  id="apellido_doc" class="tam1" placeholder="Apellido" required></input></br>
-                    <input type="text" name="edad_doc" id="edad_doc"   class="tam1"placeholder="edad" required></input ></br>
                     <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
                     <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
                     <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Expediente" required></textarea></br>
                     <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Mujer">Mujer</input></br>
                     <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Hombre">Hombre</input></br>
                     <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@ail" required> </input>
-                    <input type="file" name="img_doc" id="img_paciente" class="tam1" placeholder="ingresa los datos del paciente" ></input></br>
+                    <input type="text" name="pass_doc" id="pass_doc" class="tam1" placeholder="Password" required> </input>
                     <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
             </form>
-          </div>
           </div>
     </div></br>
     
@@ -174,7 +171,6 @@
                     <input type="text" name="id_doc"  class="tam1"placeholder ="ID Doctor"  required></input></br>
                     <input type="text" name="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
                     <input type="text" name="apellido_doc" class="tam1" placeholder="Apellido" required></input></br>
-                    <input type="text" name="edad_doc"  class="tam1"placeholder="edad" ></input required></br>
                     <p> Genero</p>
                     <input type="radio" name="sexo_doc" class="rbutton" value="Mujer">Mujer</input></br>
                     <input type="radio" name="sexo_doc" class="rbutton" value="Hombre">Hombre</input></br>

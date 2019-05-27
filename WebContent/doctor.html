@@ -50,10 +50,7 @@
                               <a href="index.html">Cita</a>
                         </li>
                         <li>
-                              <a href="administrador.html">Administrar</a> <!--Se conecta con el CRUD Administrador-->
-                        </li>
-                        <li>
-                              <a href="contact.html">Chat</a>
+                              <a href="#irCrud">Administrar</a> <!--Se conecta con el CRUD Administrador-->
                         </li>
                   </ul>
 
@@ -73,16 +70,15 @@
 ==================================-->
 <div class="hero-slider">
     <!-- Slider Item -->
-    <div class="slider-item slide1" style="background-image:url(images/slider/slider-bg-1.jpg)">
+    <div class="slider-item slide1" style="background-image:url(images/slider/slider-flores.jpg)">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Slide Content Start -->
                     <div class="content style text-center">
-                        <h2 class="text-white text-bold mb-2">Our Best Surgeons</h2>
-                        <p class="tag-text mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sunt animi sequi ratione quod at earum. <br>
-                             Quis quos officiis numquam!</p>
-                        <a href="#" class="btn btn-main btn-white">explore</a>
+                        <h2 class="text-white text-bold mb-2">Administrar paciente</h2>
+                        <p class="tag-text mb-5">Desde aquí el doctor puede buscar la información del paciente o modificarla</p>
+                        <a href="#irCrud" class="btn btn-main btn-white">Ir a Buscar o cambiar</a>
                     </div>
                     <!-- Slide Content End -->
                 </div>
@@ -90,34 +86,17 @@
         </div>
     </div>
     <!-- Slider Item -->
-    <div class="slider-item" style="background-image:url(images/slider/slider-bg-2.jpg);">
+    <div class="slider-item" style="background-image:url(images/slider/slider-camino.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Slide Content Start-->
                     <div class="content style text-right">
-                        <h2 class="text-white">We Care About <br>Your Health</h2>
-                        <p class="tag-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                        <a href="#" class="btn btn-main btn-white">about us</a>
+                        <h2 class="text-white">Citas<br></h2>
+                        <p class="tag-text">Desde aquí se puede consultar las citas que tiene el doctor</p>
+                        <a href="#" class="btn btn-main btn-white">Citas</a>
                     </div>
                     <!-- Slide Content End-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Slider Item -->
-    <div class="slider-item" style="background-image:url(images/slider/slider-bg-3.jpg)">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Slide Content Start -->
-                    <div class="content text-center style">
-                        <h2 class="text-white text-bold mb-2">Best Medical Services</h2>
-                        <p class="tag-text mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae deserunt, 
-                            <br>eius pariatur minus itaque nostrum.</p>
-                        <a href="shop.html" class="btn btn-main btn-white">shop now</a>
-                    </div>
-                    <!-- Slide Content End -->
                 </div>
             </div>
         </div>
@@ -126,40 +105,47 @@
 
 <!--====  End of Page Slider  ====-->
 
-<section class="cta">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="cta-block">
-                    <div class="emmergency item">
-                        <i class="fa fa-phone"></i>
-                        <h2>Emegency Cases</h2>
-                        <a href="#">1-800-700-6200</a>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="top-doctor item">
-                        <i class="fa fa-stethoscope"></i>
-                        <h2>24 Hour Service</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore dignissimos officia dicta suscipit vel eum</p>
-                        <a href="#" class="btn btn-main">Read more</a>
-                    </div>
-                    <div class="working-time item">
-                        <i class="fa fa-hourglass-o"></i>
-                        <h2>Working Hours</h2>
-                        <ul class="w-hours">
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--====  CRUD del doctor para el paciente  ====-->
 
+<div class="formato" id ="irCrud">
 
+  <div class="dropdown">
+    <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p>consulta paciente</p>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="ConsultaPac" method="post">
+          <input type="text" name="id_paciente" class="tam1" placeholder="ingresa el ID del paciente"  required></input></br>
+          <p> Consulta Paciente</p>
+          <input type="radio" name="consulta_pac" class="rbutton" value="Individual">Individual</input></br>
+          <input type="radio" name="consulta_pac" class="rbutton" value="General">General</input></br>
+          <input type="submit" value="enviar" class="tbutton"></input>	
+      </form>
+      </div>
+  </div></br>
+  
+  <div class="dropdown">
+    <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p>modificar paciente</p>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="UpdatePac" method="post">
+            <input type="text" name="id_paciente"  class="tam1"placeholder ="ID paciente"  required></input></br>
+          <input type="text" name="nombre_pac" class="tam1" placeholder="Nombre"  required></input></br> 
+          <input type="text" name="apellido_pac" class="tam1" placeholder="Apellido" required></input></br>
+          <input type="text" name="edad_pac"  class="tam1"placeholder="edad" ></input required></br>
+          <p> Genero</p>
+          <input type="radio" name="sexo_pac" class="rbutton" value="Mujer">Mujer</input></br>
+          <input type="radio" name="sexo_pac" class="rbutton" value="Hombre">Hombre</input></br>
+          <input type="text" name="domicilio_pac" class="tam1" placeholder="Domicilio" required></input></br>
+          <input type="text" name="telefono_pac" class="tam1" placeholder="Telefono" required></input></br>
+          <textarea name="expediente_pac" class="tam1"  rows="4" cols="32" placeholder="Expediente" required></textarea></br>
+          <input type="submit" value="enviar" class="tbutton"></input>	
+      </form>
+      </div>
+  </div></br>
 
+</div>
 
 <!--footer-main-->
 <footer class="footer-main">
