@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +65,7 @@ public class ReadGeneralAdm extends HttpServlet {
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
 			
+			RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 			salida.append("<table>");
 				salida.append("<tr>");
 				
@@ -104,7 +106,7 @@ public class ReadGeneralAdm extends HttpServlet {
 				
 				salida.append("</tr>");
 
-			salida.append("</table");
+			salida.append("</table>");
 				
 				
 				/* 
@@ -129,6 +131,7 @@ public class ReadGeneralAdm extends HttpServlet {
 
 				
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

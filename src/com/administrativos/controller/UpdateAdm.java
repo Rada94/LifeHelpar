@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,14 +86,16 @@ public class UpdateAdm extends HttpServlet {
 					
 					rs= pstmnt.executeUpdate();
 					
+					RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 					if(rs>0)
 					{
-						out.append("Se ha actualizado correctamente");
+						out.append("<p>Se ha actualizado correctamente</p>");
 					}
 					else
 					{	
-						out.append("Error al actualizar");
+						out.append("<p>Error al actualizar</p>");
 					}
+					rd.include(request, response);
 					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

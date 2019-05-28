@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,52 +67,49 @@ public class ReadGeneralPac extends HttpServlet {
 			rs= pstmnt.executeQuery();
 			
 			
-			
+			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
 			salida.append("<table>");
 			
 			salida.append("<td> Id paciente </td>");
 			salida.append("<td> Nombre  </td>");
 			salida.append("<td> Apellidos </td>");
-			salida.append("<td> Edad</td>");
 			salida.append("<td> Sexo </td>");
 			salida.append("<td> Domicilio </td>");
 			salida.append("<td> Telefono </td>");
+			salida.append("<td> Email </td>");
 			salida.append("<td> Expediente</td>");
-			salida.append("<td> incidencias : </td>");
-			salida.append("<td> Estado emocional </td>");
+			salida.append("<td> Status </td>");
+			salida.append("<td> Incidencia </td>");
 
 
 
 			
 			salida.append("</tr>");
-			salida.append("</table");
 
 			while(rs.next()) {
 				
-				salida.append("<table>");
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
-	
-					salida.append("<td>"+rs.getString("apellido_pac")+"</td>");
-					salida.append("<td>"+rs.getInt("edad_pac")+"</td>");
-					
-					salida.append("<td>"+rs.getString("sexo_pac")+"</td>");					
-					salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
-					
-					salida.append("<td>"+rs.getInt("telefono_pac")+"</td>");
-					salida.append("<td>"+rs.getString("expediente_pac")+"</td>");
-					
-					salida.append("<td>"+rs.getString("pac_incidencia")+"</td>");
-					salida.append("<td>"+rs.getString("estadoEmocional")+"</td>");
+				salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("nombre_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("apellidos_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("genero_paciente")+"</td>");		
+				
+				salida.append("<td>"+rs.getString("domicilio_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("telefono_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("email_paciente")+"</td>");
+				
+				salida.append("<td>"+rs.getString("expediente_paciente")+"</td>");					
+				salida.append("<td>"+rs.getString("status_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("incidencia_paciente")+"</td>");
 
 
 				
 				salida.append("</tr>");
-			salida.append("</table");
 
 				
 			}
+			salida.append("</table>");
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

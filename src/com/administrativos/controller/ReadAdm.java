@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,6 +69,7 @@ public class ReadAdm extends HttpServlet {
 			pstmnt.setInt(1, id_administrativo);
 			rs= pstmnt.executeQuery();
 			
+			RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 			salida.append("<table>");
 			
 			salida.append("<td> Id administrativo </td>");
@@ -81,11 +83,9 @@ public class ReadAdm extends HttpServlet {
 			salida.append("<td> Pass: </td>");
 
 			salida.append("</tr>");
-			salida.append("</table");
 
 			while(rs.next()) {
 				
-				salida.append("<table>");
 				salida.append("<tr>");
 					salida.append("<td>"+rs.getInt("id_administrativo")+"</td>");
 					salida.append("<td>"+rs.getString("nombre_administrativo")+"</td>");
@@ -102,10 +102,11 @@ public class ReadAdm extends HttpServlet {
 
 				
 				salida.append("</tr>");
-			salida.append("</table");
+			salida.append("</table>");
 
 				
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

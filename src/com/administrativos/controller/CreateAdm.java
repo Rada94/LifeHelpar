@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -87,16 +88,16 @@ public class CreateAdm extends HttpServlet{
 //				salida.append(driver);
 				
 				
-//				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("adminstra.html");
 				if(rs>0)
 				{
-					response.getWriter().append("<font color='red'>Elemento fue creado con éxito</font>");
+					response.getWriter().append("<p>Elemento fue creado con éxito</p>");
 				}
 				else
 				{
-					response.getWriter().append("<font color='red'>Elemento no fue creado con éxito</font>");
+					response.getWriter().append("<p>Elemento no fue creado con éxito</p>");
 				}
-//				
+				rd.include(request, response);
 				
 			} catch (Exception e) {
 			

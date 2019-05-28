@@ -1,4 +1,4 @@
-package com.pacientes.controller;
+package com.doctores.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,26 +18,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UpdatePac
+ * Servlet implementation class CreateDoc
  */
-@WebServlet("/UpdatePac")
-public class UpdatePac extends HttpServlet {
+@WebServlet("/CreateDoc")
+public class CreateDoc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_pac= Integer.parseInt(request.getParameter("id_paciente"));
-		String nombre_pac = request.getParameter("nombre_pac");
-		String apellido_pac = request.getParameter("apellidos_pac");
-		String sexo_pac = request.getParameter("sexo_pac");
-		String domicilio_pac = request.getParameter("domicilio_pac");
-		String telefono_pac = request.getParameter("telefono_pac");
-		String email_pac=request.getParameter("email_pac");
-		String pass_pacc=request.getParameter("pass_pac");
-		String expediente_pac = request.getParameter("expediente_pac");
-		String pac_incidencia = request.getParameter("pac_incidencia");
+		String nombre_doc = request.getParameter("nombre_doc");
+		String apellido_doc = request.getParameter("apellidos_doc");
+		String cedula_doc = request.getParameter("cedula_doc");
+		String sexo_doc = request.getParameter("sexo_doc");
+		String domicilio_doc = request.getParameter("domicilio_doc");
+		String telefono_doc = request.getParameter("telefono_doc");
+		String email_doc = request.getParameter("email_doc");
+		String pass_doc = request.getParameter("pass_doc");
+
 		
 		//Declaramos e inicializamos las credenciales de acceso
 		Properties props=new Properties();
@@ -58,7 +57,7 @@ public class UpdatePac extends HttpServlet {
 		String usuario=props.getProperty("user");
 		String password=props.getProperty("pass");
 		String driver=props.getProperty("driver");
-		String sql=props.getProperty("UpdatePac");
+		String sql=props.getProperty("CreateDoc");
 		
 		PrintWriter out = response.getWriter();
 		
@@ -75,27 +74,25 @@ public class UpdatePac extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setString(1, nombre_pac);
-			pstmnt.setString(2, apellido_pac);
-			pstmnt.setString(3, sexo_pac);
-			pstmnt.setString(4, domicilio_pac);
-			pstmnt.setString(5, telefono_pac);
-			pstmnt.setString(6, email_pac);
-			pstmnt.setString(7, pass_pacc);
-			pstmnt.setString(8, expediente_pac);
-			pstmnt.setString(9, pac_incidencia);
-			pstmnt.setInt(10, id_pac);
+			pstmnt.setString(1, nombre_doc);
+			pstmnt.setString(2, apellido_doc);
+			pstmnt.setString(3, cedula_doc);
+			pstmnt.setString(4, sexo_doc);
+			pstmnt.setString(5, domicilio_doc);
+			pstmnt.setString(6, telefono_doc);
+			pstmnt.setString(7, email_doc);
+			pstmnt.setString(8, pass_doc);
 			
-			rs= pstmnt.executeUpdate();
+			rs= pstmnt.executeUpdate();                                   
 			
-			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
+			RequestDispatcher rd=request.getRequestDispatcher("administraDoc.html");
 			if(rs>0)
 			{
-				out.append("<p>Se ha actualizaron los datos correctamente</p>");
+				out.append("<p>Se dio de alta doctor</p>");
 			}
 			else
-			{	
-				out.append("<p>Error al actualizar los datos</p>");
+			{
+				out.append("<p>No se dio de alta doctor</p>");
 			}
 			rd.include(request, response);
 			
@@ -115,5 +112,4 @@ public class UpdatePac extends HttpServlet {
 			
 		}
 	}
-
 }

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,16 +32,15 @@ public class CreatePac extends HttpServlet {
 		response.setContentType("text/html charset='utf-8'");
 		
 		String nombre_pac = request.getParameter("nombre_pac");
-		String apellido_pac = request.getParameter("apellido_pac");
+		String apellido_pac = request.getParameter("apellidos_pac");
 		String sexo_pac = request.getParameter("sexo_pac");
 		String domicilio_pac = request.getParameter("domicilio_pac");
 		String telefono_pac = request.getParameter("telefono_pac");
 		String email_pac = request.getParameter("email_pac");
 		String pass_pac = request.getParameter("pass_pac");
-		String status_pac=request.getParameter("status_pac");
 		String expediente_pac = request.getParameter("expediente_pac");
 		String incidencia_pac = request.getParameter("pac_incidencia");
-		String cita_pac = request.getParameter("cita_pac");
+		String cita_pac = request.getParameter("citaFecha_pac");
 
 		
 		//Declaramos e inicializamos las credenciales de acceso
@@ -86,27 +86,26 @@ public class CreatePac extends HttpServlet {
 			pstmnt.setString(5, telefono_pac);
 			pstmnt.setString(6, email_pac);
 			pstmnt.setString(7, pass_pac);
-			pstmnt.setString(8, status_pac);
-			pstmnt.setString(9, expediente_pac);
-			pstmnt.setString(10, incidencia_pac);
-			pstmnt.setString(11, cita_pac);
+			pstmnt.setString(8, expediente_pac);
+			pstmnt.setString(9, incidencia_pac);
+			pstmnt.setString(10, cita_pac);
 			
 			rs= pstmnt.executeUpdate();                                   
 			//rs= stmnt.executeUpdate("INSERT INTO pacientes (nombre_pac, apellido_pac, edad_pac) VALUES ('"+nombre_pac+"', '"+apellido_pac+"',"+edad_pac+");");
 			//rs= stmnt.executeUpdate("INSERT INTO abarrotes (nombre_producto, precio_producto) VALUES ('"+nombre_producto +"', "+precio_producto+");");
 
 			
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("administraPaciente.html");
 			if(rs>0)
 			{
-				out.println("<font color='red'>Elemento fue creado con éxito</font>");
+				out.append("<p>Se dio de alta paciente</p>");
 			}
 			else
 			{
-				out.println("<font color='red'>Elemento no fue creado con éxito</font>");
+				out.append("<p>NNo se dio de alta paciente</p>");
 			}
 //			out.println("<a href=http://localhost:8080/MVCPractica10/index.jsp>index</a>");
-//			dispatcher.include(request, response);
+			dispatcher.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

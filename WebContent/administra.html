@@ -140,6 +140,90 @@
 
 <!--====  End of Page Slider  ====-->
 
+<!--====  Inicio CRUD Administrador  ====-->
+
+<div>
+		<div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Crear Administrativo</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="CreateAdm" method="post">
+                    <input type="text" name="nombre_adm"  id="nombre_adm" class="tam1" placeholder="Nombre"  required></input></br> 
+                    <input type="text" name="apellido_adm"  id="apellido_adm" class="tam1" placeholder="Apellido" required></input></br>
+                    <input type="text" name="puesto_adm"  id="puesto_adm" class="tam1" placeholder="Puesto laboral" required></input></br>
+                    <input type="radio" name="sexo_adm" id="sexo_adm"  class="rbutton" value="Mujer">Mujer</input></br>
+                    <input type="radio" name="sexo_adm" id="sexo_adm"  class="rbutton" value="Hombre">Hombre</input></br>
+                    <input type="text" name="domicilio_adm" id="domicilio_adm"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_adm" id="telefono_adm"  class="tam1" placeholder="Telefono" required></input></br>
+	                <input type="text" name="email_adm" id="email_adm"  class="tam1" placeholder="Email" required></input></br>
+                    <input type="text" name="pass_adm" id="pass_adm"  class="tam1" placeholder="Password" required></input></br>
+                    
+                    <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
+            </form>
+          </div>
+    </div></br>
+    
+    
+    <div class="dropdown">
+        <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Consulte Administrativos</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="ReadAdm" method="post">
+                    <input type="text" name="id_adm" class="tam1" placeholder="ingrese el ID del Administrador"  required></input></br>
+                    <input type="submit" value="enviar" class="tbutton"></input>	
+            </form>
+          </div>
+    </div></br>
+    
+    <div class="dropdown">
+        <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Consulte todos los Administrativos</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="ReadGeneralAdm" method="post">
+                    <input type="submit" value="Consulte todos los administrativos" class="tbutton"></input>	
+            </form>
+          </div>
+    </div></br>
+    
+    <div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Modifique Administrativo</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="UpdateAdm" method="post">
+                    <input type="text" name="nombre_adm"  id="nombre_adm" class="tam1" placeholder="Nombre"  required></input></br> 
+                    <input type="text" name="apellido_adm"  id="apellido_adm" class="tam1" placeholder="Apellido" required></input></br>
+                    <input type="text" name="puesto_adm"  id="puesto_adm" class="tam1" placeholder="Puesto laboral" required></input></br>
+                    <input type="radio" name="sexo_adm" id="sexo_adm"  class="rbutton" value="Mujer">Mujer</input></br>
+                    <input type="radio" name="sexo_adm" id="sexo_adm"  class="rbutton" value="Hombre">Hombre</input></br>
+                    <input type="text" name="domicilio_adm" id="domicilio_adm"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_adm" id="telefono_adm"  class="tam1" placeholder="Telefono" required></input></br>
+	                <input type="text" name="email_adm" id="email_adm"  class="tam1" placeholder="Email" required></input></br>
+                    <input type="text" name="pass_adm" id="pass_adm"  class="tam1" placeholder="Password" required></input></br>
+            </form>
+          </div>
+    </div></br>
+
+    <div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Baja Administrativo</p>
+          </button>
+    
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="DeleteAdm" method="post">
+                    <input type="text" name="id_admin" id="id_adm" class="tam1"placeholder="Ingrese el ID del administrativo a dar de baja " required></input></br>
+                    <input type="submit" value="enviar" class="tbutton"></input>	
+            </form>
+          </div>
+    </div>
+
+
+    <!--====  End CRUD Administrador  ====-->
+
+
 <section class="cta">
     <div class="container">
         <div class="row">

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,15 +71,17 @@ public class DeleteAdm extends HttpServlet {
 			pstmnt.setInt(1, id_administrativo);
 			
 			rs= pstmnt.executeUpdate();
-
+			
+			RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 			if(rs>0)
 			{
-				out.println("<font color='red'>Elemento fue eliminado con éxito</font>");
+				out.println("<p>Elemento fue eliminado con éxito</p>");
 			}
 			else
 			{
-				out.println("<font color='red'>Elemento no fue eliminado con éxito</font>");
+				out.println("<p>Elemento no fue eliminado con éxito</p>");
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
