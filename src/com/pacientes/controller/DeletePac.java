@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +28,7 @@ public class DeletePac extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_pac= Integer.parseInt(request.getParameter("id_paciente"));
+		int id_pac= Integer.parseInt(request.getParameter("id_pac"));
 		
 		
 		//Declaramos e inicializamos las credenciales de acceso
@@ -69,15 +70,17 @@ public class DeletePac extends HttpServlet {
 			pstmnt.setInt(1, id_pac);
 			
 			rs= pstmnt.executeUpdate();
-
+			
+			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
 			if(rs>0)
 			{
-				out.println("<font color='red'>Elemento fue eliminado con éxito</font>");
+				out.println("<p>Elemento fue eliminado con éxito</p>");
 			}
 			else
 			{
-				out.println("<font color='red'>Elemento no fue eliminado con éxito</font>");
+				out.println("<p>Elemento no fue eliminado con éxito</p>");
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

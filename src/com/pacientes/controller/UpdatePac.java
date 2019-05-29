@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,18 +28,16 @@ public class UpdatePac extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_pac= Integer.parseInt(request.getParameter("id_paciente"));
+		int id_pac= Integer.parseInt(request.getParameter("id_pac"));
 		String nombre_pac = request.getParameter("nombre_pac");
-		String apellido_pac = request.getParameter("apellido_pac");
+		String apellido_pac = request.getParameter("apellidos_pac");
 		String sexo_pac = request.getParameter("sexo_pac");
 		String domicilio_pac = request.getParameter("domicilio_pac");
 		String telefono_pac = request.getParameter("telefono_pac");
 		String email_pac=request.getParameter("email_pac");
 		String pass_pacc=request.getParameter("pass_pac");
-		String status_pac=request.getParameter("status_pac");
 		String expediente_pac = request.getParameter("expediente_pac");
-		String pac_incidencia = request.getParameter("pac_incidencia");
-		String cita_pac= request.getParameter("cita_pac");
+		String incidencia_pac = request.getParameter("incidencia_pac");
 		
 		//Declaramos e inicializamos las credenciales de acceso
 		Properties props=new Properties();
@@ -83,22 +82,22 @@ public class UpdatePac extends HttpServlet {
 			pstmnt.setString(5, telefono_pac);
 			pstmnt.setString(6, email_pac);
 			pstmnt.setString(7, pass_pacc);
-			pstmnt.setString(8, status_pac);
-			pstmnt.setString(9, expediente_pac);
-			pstmnt.setString(10, pac_incidencia);
-			pstmnt.setString(11, cita_pac);
-			pstmnt.setInt(12, id_pac);
+			pstmnt.setString(8, expediente_pac);
+			pstmnt.setString(9, incidencia_pac);
+			pstmnt.setInt(10, id_pac);
 			
 			rs= pstmnt.executeUpdate();
 			
+			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
 			if(rs>0)
 			{
-				out.append("Se ha actualizado correctamente");
+				out.append("<p>Se ha actualizaron los datos correctamente</p>");
 			}
 			else
 			{	
-				out.append("Error al actualizar");
+				out.append("<p>Error al actualizar los datos</p>");
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

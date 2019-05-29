@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class DeleteAdm extends HttpServlet {
     	
     	response.setContentType("text/html charset='utf-8'");
 		
-		int id_administrativo= Integer.parseInt(request.getParameter("id_adm"));
+		int id_adm= Integer.parseInt(request.getParameter("id_adm"));
 		
 		
 		//Declaramos e inicializamos las credenciales de acceso
@@ -67,18 +68,20 @@ public class DeleteAdm extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_administrativo);
+			pstmnt.setInt(1, id_adm);
 			
 			rs= pstmnt.executeUpdate();
-
+			
+			RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 			if(rs>0)
 			{
-				out.println("<font color='red'>Elemento fue eliminado con éxito</font>");
+				out.println("<p>Elemento fue eliminado con éxito</p>");
 			}
 			else
 			{
-				out.println("<font color='red'>Elemento no fue eliminado con éxito</font>");
+				out.println("<p>Elemento no fue eliminado con éxito</p>");
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

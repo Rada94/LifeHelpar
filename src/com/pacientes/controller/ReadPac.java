@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,8 +56,8 @@ public class ReadPac extends HttpServlet {
 		Connection conn=null;
 		PreparedStatement pstmnt =null;
 		ResultSet rs=null;
-		int id_paciente=0;
-		id_paciente=Integer.parseInt(request.getParameter("id_paciente"));
+		int id_pac=0;
+		id_pac=Integer.parseInt(request.getParameter("id_pac"));
 
 
 		
@@ -67,17 +68,10 @@ public class ReadPac extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_paciente);
+			pstmnt.setInt(1, id_pac);
 			rs= pstmnt.executeQuery();
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
 			salida.append("<table>");
 			
 			salida.append("<td> Id paciente </td>");
@@ -88,41 +82,37 @@ public class ReadPac extends HttpServlet {
 			salida.append("<td> Domicilio </td>");
 			salida.append("<td> Telefono </td>");
 			salida.append("<td> Expediente</td>");
-			salida.append("<td> incidencias : </td>");
-			salida.append("<td> Estado emocional </td>");
+			salida.append("<td> Incidencias </td>");
+			salida.append("<td> Citas </td>");
 
 
 
 			
 			salida.append("</tr>");
-			salida.append("</table");
 
 			while(rs.next()) {
 				
-				salida.append("<table>");
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
+					salida.append("<td>"+rs.getInt("id_pac")+"</td>");
 					salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
-	
-					salida.append("<td>"+rs.getString("apellido_pac")+"</td>");
-					salida.append("<td>"+rs.getInt("edad_pac")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_pac")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_pac")+"</td>");		
 					
-					salida.append("<td>"+rs.getString("sexo_pac")+"</td>");					
 					salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
+					salida.append("<td>"+rs.getString("telefono_pac")+"</td>");
+					salida.append("<td>"+rs.getString("email_pac")+"</td>");
 					
-					salida.append("<td>"+rs.getInt("telefono_pac")+"</td>");
-					salida.append("<td>"+rs.getString("expediente_pac")+"</td>");
-					
-					salida.append("<td>"+rs.getString("pac_incidencia")+"</td>");
-					salida.append("<td>"+rs.getString("estadoEmocional")+"</td>");
+					salida.append("<td>"+rs.getString("expediente_pac")+"</td>");					
+					salida.append("<td>"+rs.getString("incidencia_pac")+"</td>");
+					salida.append("<td>"+rs.getString("cita_pac")+"</td>");
 
 
 				
 				salida.append("</tr>");
-			salida.append("</table");
-
-				
+			
 			}
+			salida.append("</table>");
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

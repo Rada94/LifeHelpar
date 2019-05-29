@@ -66,7 +66,19 @@
 
             </div>
             <!-- /.navbar-collapse -->
-      </div>
+
+				<form name="contact_form" class="default-form contact-form margen"
+					action="CitaPac" method="post">
+					<div class="form-group">
+						<input type="text" name="id_pac" id="id_pac" placeholder="ID del paciente" required=""></br> 
+						<input type="text" name="nombre_doc" id="nombre_doc" placeholder="Nombre del doctor" required=""></input></br> 
+						<input type="datetime-local" name="fecha" id="fecha"></input></br>
+					</div>
+					<button type="submit" class="btn-style-one" name="bntAltaCita"
+						id="bntAltaCita">Dar de alta cita</button>
+
+				</form>
+			</div>
       <!-- /.container-fluid -->
 </nav>
 <!--End Main Header -->
@@ -92,25 +104,17 @@
         <i class="fa fa-calendar" aria-hidden="true"></i>
     </div>
 </div>
+</div>
+</form>
 
 <form action="btnAltaCita" method="post" >
-<div class="col-lg-5 col-md-5 col-sm-5">
-    <div class="form-group text-center">
-        <button type="submit" class="btn-style-one" name = "bntAltaCita" id = "bntAltaCita" >Dar de alta cita</button>
-    </div>
-</div>
-</form>
-
-<form action="btnBajaCita" method="post" >
-<div class="col-lg-5 col-md-5 col-sm-5">
-    <div class="form-group text-center">
-        <button type="submit" class="btn-style-one" name = "bntBajaCita" id = "bntBajaCita">Eliminar cita</button>
-    </div>
-</div>
-</form>
-
-</div>
-</form>
+  <div class="col-lg-5 col-md-5 col-sm-5">
+      <div class="form-group text-center">
+          <button type="submit" class="btn-style-one" name = "bntAltaCita" id = "bntAltaCita" >Dar de alta cita</button>
+      </div>
+  </div>
+  </form>
+  
 </div>                        
 </div>
 </div>                    

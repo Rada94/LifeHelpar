@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,7 @@ public class ExpedientePac extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html charset='utf-8'");
 		
 		int id_pac= Integer.parseInt(request.getParameter("id_paciente"));
 		String expediente_pac = request.getParameter("expediente_pac");
@@ -68,14 +70,16 @@ public class ExpedientePac extends HttpServlet {
 			
 			rs= pstmnt.executeUpdate();
 
+			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
 			if(rs>0)
 			{
-				out.append("Se realizo con exito");
+				out.append("<p>Se realizo con exito</p>");
 			}
 			else
 			{
-				out.append("No se realizo con exito");
+				out.append("<p>No se realizo con exito</p>");
 			}
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

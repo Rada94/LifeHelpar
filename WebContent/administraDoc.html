@@ -81,7 +81,7 @@
                     <div class="content style text-center">
                         <h2 class="text-white text-bold mb-2">Administra a los Doctores</h2>
                         <p class="tag-text mb-5">Desde aquí se puede dar de alta, consultar, modificar y eliminar la información de los Doctores</p>
-                        <a href="#irCrudDoc" class="btn btn-main btn-white">Ir al CRUD</a>
+                        <a href="#irCrudDoc" class="btn btn-main btn-white">Ir a Crear,Modificar,Buscar o Borrar</a>
                     </div>
                     <!-- Slide Content End -->
                 </div>
@@ -134,21 +134,21 @@
             <p>Crear Doctor</p>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <form action="CreateDoc" method="post" enctype="multipart/form-data">
+            <form action="CreateDoc" method="post" >
                     <input type="text" name="nombre_doc"  id="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
-                    <input type="text" name="apellido_doc"  id="apellido_doc" class="tam1" placeholder="Apellido" required></input></br>
-                    <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
-                    <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
-                    <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Expediente" required></textarea></br>
+                    <input type="text" name="apellidos_doc"  id="apellidos_doc" class="tam1" placeholder="Apellidos" required></input></br>
+                    <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Cedula" required></textarea></br>
+                    <p> Genero</p>
                     <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Mujer">Mujer</input></br>
                     <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Hombre">Hombre</input></br>
-                    <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@ail" required> </input>
+                    <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
+                    <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@il" required> </input>
                     <input type="text" name="pass_doc" id="pass_doc" class="tam1" placeholder="Password" required> </input>
                     <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
             </form>
           </div>
     </div></br>
-    
     
     <div class="dropdown">
         <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -156,29 +156,37 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="ConsultaDoc" method="post">
-                    <input type="text" name="id_doctor" class="tam1" placeholder="ingresa el ID del paciente"  required></input></br>
-                    <input type="submit" value="enviar" class="tbutton"></input>	
+                  <p>Ingrese el ID del doctor que quiere consultar</p>
+                  <input type="text" name="id_doctor" class="tam1" placeholder="ID Doctor"  required></input></br>
+                  <input type="submit" value="enviar" class="tbutton"></input>	
             </form>
+          <form action="ConsultaGeneralDoc" method="post"></form>
+          <p>Si quiere una consulta general de click en el boton de abajo</p>
+          <input type="submit" value="Consulta General" class="tbutton"></input>	
+          </form>
           </div>
     </div></br>
     
     <div class="dropdown">
         <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <p>Modificar doctor</p>
+            <p>Modifica doctor</p>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="UpdateDoc" method="post">
+                    <p>Ingrese el ID del Doctor que quiere modificar</p>
                     <input type="text" name="id_doc"  class="tam1"placeholder ="ID Doctor"  required></input></br>
-                    <input type="text" name="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
-                    <input type="text" name="apellido_doc" class="tam1" placeholder="Apellido" required></input></br>
+                    <p>Ingrese a continuación los datos que quiere modificar</p>
+                    <input type="text" name="nombre_doc"  id="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
+                    <input type="text" name="apellidos_doc"  id="apellidos_doc" class="tam1" placeholder="Apellidos" required></input></br>
+                    <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Cedula" required></textarea></br>
                     <p> Genero</p>
-                    <input type="radio" name="sexo_doc" class="rbutton" value="Mujer">Mujer</input></br>
-                    <input type="radio" name="sexo_doc" class="rbutton" value="Hombre">Hombre</input></br>
-                    <input type="text" name="domicilio_doc" class="tam1" placeholder="Domicilio" required></input></br>
-                    <input type="text" name="telefono_doc" class="tam1" placeholder="Telefono" required></input></br>
-                    <textarea name="expediente_doc" class="tam1"  rows="4" cols="32" placeholder="Expediente" required></textarea></br>
-                    <input type="text" name="incidencia_doc" class="tam1" placeholder="Incidencia"  ></input></br>
-                    <input type="submit" value="enviar" class="tbutton"></input>	
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Mujer">Mujer</input></br>
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Hombre">Hombre</input></br>
+                    <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
+                    <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@il" required> </input>
+                    <input type="text" name="pass_doc" id="pass_doc" class="tam1" placeholder="Password" required> </input>
+                    <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
             </form>
           </div>
     </div></br>
@@ -190,7 +198,8 @@
     
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="DeleteDoc" method="post">
-                    <input type="text" name="id_doctor" class="tam1"placeholder="ingresa los datos del doctor" required></input></br>
+              <p>Ingrese el ID del doctor que quiere dar de baja</p>
+                    <input type="text" name="id_doctor" class="tam1"placeholder="ID Doctor" required></input></br>
                     <input type="submit" value="enviar" class="tbutton"></input>	
             </form>
           </div>

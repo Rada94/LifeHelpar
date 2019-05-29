@@ -1,4 +1,4 @@
-package com.pacientes.controller;
+package com.doctores.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -19,17 +18,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ReadGeneralPac
+ * Servlet implementation class CreateDoc
  */
-@WebServlet("/ReadGeneralPac")
-public class ReadGeneralPac extends HttpServlet {
+@WebServlet("/CreateDoc")
+public class CreateDoc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String nombre_doc = request.getParameter("nombre_doc");
+		String apellido_doc = request.getParameter("apellidos_doc");
+		String cedula_doc = request.getParameter("cedula_doc");
+		String sexo_doc = request.getParameter("sexo_doc");
+		String domicilio_doc = request.getParameter("domicilio_doc");
+		String telefono_doc = request.getParameter("telefono_doc");
+		String email_doc = request.getParameter("email_doc");
+		String pass_doc = request.getParameter("pass_doc");
+
+		
+		//Declaramos e inicializamos las credenciales de acceso
 		Properties props=new Properties();
 		String fileName="config.properties";
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream(fileName);
@@ -48,86 +57,59 @@ public class ReadGeneralPac extends HttpServlet {
 		String usuario=props.getProperty("user");
 		String password=props.getProperty("pass");
 		String driver=props.getProperty("driver");
-		String sql=props.getProperty("ReadGeneralPac");
+		String sql=props.getProperty("CreateDoc");
 		
+		PrintWriter out = response.getWriter();
+		
+		//String sql = "INSERT INTO productos VALUES (";
+		
+		//Declaramos e inicializamos los objetos de conexión
 		Connection conn=null;
 		PreparedStatement pstmnt =null;
-		ResultSet rs=null;
-		PrintWriter salida = response.getWriter();
-
+		int rs = 0;//clase para tomar toda la tabla
 		
 		try {
-			//Se instancia el driver
 			Class.forName(driver).newInstance();
 			//se abre la conexion a la base de datos
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
+			pstmnt.setString(1, nombre_doc);
+			pstmnt.setString(2, apellido_doc);
+			pstmnt.setString(3, cedula_doc);
+			pstmnt.setString(4, sexo_doc);
+			pstmnt.setString(5, domicilio_doc);
+			pstmnt.setString(6, telefono_doc);
+			pstmnt.setString(7, email_doc);
+			pstmnt.setString(8, pass_doc);
 			
-			rs= pstmnt.executeQuery();
+			rs= pstmnt.executeUpdate();                                   
 			
-			
-			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
-			salida.append("<table>");
-			
-			salida.append("<td> Id paciente </td>");
-			salida.append("<td> Nombre  </td>");
-			salida.append("<td> Apellidos </td>");
-			salida.append("<td> Sexo </td>");
-			salida.append("<td> Domicilio </td>");
-			salida.append("<td> Telefono </td>");
-			salida.append("<td> Email </td>");
-			salida.append("<td> Expediente</td>");
-			salida.append("<td> Incidencias </td>");
-			salida.append("<td> Citas </td>");
-
-
-
-			
-			salida.append("</tr>");
-
-			while(rs.next()) {
-				
-				salida.append("<tr>");
-				salida.append("<td>"+rs.getInt("id_pac")+"</td>");
-				salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
-				salida.append("<td>"+rs.getString("apellidos_pac")+"</td>");
-				salida.append("<td>"+rs.getString("sexo_pac")+"</td>");		
-				
-				salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
-				salida.append("<td>"+rs.getString("telefono_pac")+"</td>");
-				salida.append("<td>"+rs.getString("email_pac")+"</td>");
-				
-				salida.append("<td>"+rs.getString("expediente_pac")+"</td>");					
-				salida.append("<td>"+rs.getString("incidencia_pac")+"</td>");
-				salida.append("<td>"+rs.getString("cita_pac")+"</td>");
-
-
-				
-				salida.append("</tr>");
-
-				
+			RequestDispatcher rd=request.getRequestDispatcher("administraDoc.html");
+			if(rs>0)
+			{
+				out.append("<p>Se dio de alta doctor</p>");
 			}
-			salida.append("</table>");
+			else
+			{
+				out.append("<p>No se dio de alta doctor</p>");
+			}
 			rd.include(request, response);
 			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally
-		{
-			
+		}finally {
+			//Cerramos la conexión y colocamos los objetos a disposición del garbage collector
 			try {
-				rs.close();
+				
 				pstmnt.close();
 				conn.close();
-				
 			} catch (SQLException e) {
-				
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
-		salida.close();
 	}
-
 }

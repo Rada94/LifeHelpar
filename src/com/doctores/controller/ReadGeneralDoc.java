@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +65,8 @@ public class ReadGeneralDoc extends HttpServlet {
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
 			
+			RequestDispatcher rd=request.getRequestDispatcher("administraDoc.html");
+			
 			salida.append("<table>");
 				salida.append("<tr>");
 				
@@ -75,11 +78,6 @@ public class ReadGeneralDoc extends HttpServlet {
 					salida.append("<td> Domicilio </td>");
 					salida.append("<td> Telefono </td>");
 					salida.append("<td> Email</td>");
-					salida.append("<td> Pass: </td>");
-					
-
-					//salida.append("<td> especialidad: ");
-
 
 				salida.append("</tr>");
 			rs= pstmnt.executeQuery();
@@ -88,47 +86,28 @@ public class ReadGeneralDoc extends HttpServlet {
 				
 			
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("id_doc")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
 	
-					salida.append("<td>"+rs.getString("apellidos_doctor")+"</td>");
-					salida.append("<td>"+rs.getInt("cedula_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_doc")+"</td>");
+					salida.append("<td>"+rs.getInt("cedula_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getString("genero_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getInt("telefono_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("email_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("pass_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
+					salida.append("<td>"+rs.getString("email_doc")+"</td>");
 
 				
 				salida.append("</tr>");
 
-			salida.append("</table");
-				
-				
-				/* 
-				 salida.append("<table>");
-					salida.append("<tr>");
-						salida.append("<td>"+rs.getInt("id_doctor")+"</td>");
-						salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
-		
-						salida.append("<td>"+rs.getString("apellido_doc")+"</td>");
-						salida.append("<td>"+rs.getInt("edad_doc")+"</td>");
-						
-						salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
-						salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
-						
-						salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
-						salida.append("<td>"+rs.getString("especialidad_doc")+"</td>");
-					
-					salida.append("</tr>");
-
-				salida.append("</table");
-				 */
-
-				
+			
 			}
+			salida.append("</table");
+			
+
+			rd.include(request, response);	
+		
 			
 		} catch (Exception e) {
 			e.printStackTrace();

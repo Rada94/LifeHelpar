@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,15 +29,15 @@ public class UpdateAdm extends HttpServlet {
 		// TODO Auto-generated method stub
 				response.setContentType("text/html charset='utf-8'");
 				
-				int id_administrativo= Integer.parseInt(request.getParameter("id_adm"));
-				String nombre_administrativo = request.getParameter("nombre_adm");
-				String apellidos_administrativo = request.getParameter("apellido_adm");
-		        String puesto_administrativo = request.getParameter("puesto_adm");
-				String genero_administrativo = request.getParameter("sexo_adm");
-				String domicilio_administrativo = request.getParameter("domicilio_adm");
-		        String telefono_administrativo = request.getParameter("telefono_adm");
-				String email_administrativo=request.getParameter("email_adm");
-				String pass_administrativo=request.getParameter("pass_adm");
+				int id_adm= Integer.parseInt(request.getParameter("id_adm"));
+				String nombre_adm = request.getParameter("nombre_adm");
+				String apellidos_adm = request.getParameter("apellido_adm");
+		        String puesto_adm = request.getParameter("puesto_adm");
+				String sexo_adm = request.getParameter("sexo_adm");
+				String domicilio_adm = request.getParameter("domicilio_adm");
+		        String telefono_adm = request.getParameter("telefono_adm");
+				String email_adm=request.getParameter("email_adm");
+				String pass_adm=request.getParameter("pass_adm");
 				
 				//Declaramos e inicializamos las credenciales de acceso
 				Properties props=new Properties();
@@ -73,26 +74,28 @@ public class UpdateAdm extends HttpServlet {
 					conn= DriverManager.getConnection(url,usuario,password);
 					//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 					pstmnt = conn.prepareStatement(sql);
-					pstmnt.setString(1, nombre_administrativo);
-					pstmnt.setString(2, apellidos_administrativo);
-					pstmnt.setString(3, puesto_administrativo);
-					pstmnt.setString(4, genero_administrativo);
-					pstmnt.setString(5, domicilio_administrativo);
-					pstmnt.setString(6, telefono_administrativo);
-					pstmnt.setString(7, email_administrativo);
-					pstmnt.setString(8, pass_administrativo);
-					pstmnt.setInt(9, id_administrativo);
+					pstmnt.setString(1, nombre_adm);
+					pstmnt.setString(2, apellidos_adm);
+					pstmnt.setString(3, puesto_adm);
+					pstmnt.setString(4, sexo_adm);
+					pstmnt.setString(5, domicilio_adm);
+					pstmnt.setString(6, telefono_adm);
+					pstmnt.setString(7, email_adm);
+					pstmnt.setString(8, pass_adm);
+					pstmnt.setInt(9, id_adm);
 					
 					rs= pstmnt.executeUpdate();
 					
+					RequestDispatcher rd=request.getRequestDispatcher("administra.html");
 					if(rs>0)
 					{
-						out.append("Se ha actualizado correctamente");
+						out.append("<p>Se ha actualizado correctamente</p>");
 					}
 					else
 					{	
-						out.append("Error al actualizar");
+						out.append("<p>Error al actualizar</p>");
 					}
+					rd.include(request, response);
 					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

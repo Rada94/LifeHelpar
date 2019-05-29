@@ -111,39 +111,45 @@
 
   <div class="dropdown">
     <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <p>consulta paciente</p>
+        <p>Consulta paciente</p>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="ConsultaPac" method="post">
-          <input type="text" name="id_paciente" class="tam1" placeholder="ingresa el ID del paciente"  required></input></br>
-          <p> Consulta Paciente</p>
-          <input type="radio" name="consulta_pac" class="rbutton" value="Individual">Individual</input></br>
-          <input type="radio" name="consulta_pac" class="rbutton" value="General">General</input></br>
-          <input type="submit" value="enviar" class="tbutton"></input>	
+          <p>Ingrese el ID del paciente que quiere consultar</p>
+          <input type="text" name="id_paciente" class="tam1" placeholder="ID Paciente"  required></input></br>
+          <input type="submit" value="Enviar" class="tbutton"></input>	
+      </form>
+      <form action="ConsultaGeneralPac" method="post"></form>
+          <p>Si quiere una consulta general de click en el boton de abajo</p>
+          <input type="submit" value="Consulta General" class="tbutton"></input>	
       </form>
       </div>
   </div></br>
   
   <div class="dropdown">
-    <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <p>modificar paciente</p>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <form action="UpdatePac" method="post">
-            <input type="text" name="id_paciente"  class="tam1"placeholder ="ID paciente"  required></input></br>
-          <input type="text" name="nombre_pac" class="tam1" placeholder="Nombre"  required></input></br> 
-          <input type="text" name="apellido_pac" class="tam1" placeholder="Apellido" required></input></br>
-          <input type="text" name="edad_pac"  class="tam1"placeholder="edad" ></input required></br>
-          <p> Genero</p>
-          <input type="radio" name="sexo_pac" class="rbutton" value="Mujer">Mujer</input></br>
-          <input type="radio" name="sexo_pac" class="rbutton" value="Hombre">Hombre</input></br>
-          <input type="text" name="domicilio_pac" class="tam1" placeholder="Domicilio" required></input></br>
-          <input type="text" name="telefono_pac" class="tam1" placeholder="Telefono" required></input></br>
-          <textarea name="expediente_pac" class="tam1"  rows="4" cols="32" placeholder="Expediente" required></textarea></br>
-          <input type="submit" value="enviar" class="tbutton"></input>	
-      </form>
-      </div>
-  </div></br>
+      <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p>Modifica paciente</p>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form action="UpdatePac" method="post">
+              <p>Ingrese el ID del Paciente que quiere modificar</p>
+              <input type="text" name="id_paciente"  class="tam1"placeholder ="ID paciente"  required></input></br>
+              <p>Ingrese a continuación los datos que quiere modificar</p>
+              <input type="text" name="nombre_pac"  id="nombre_pac" class="tam1" placeholder="Nombre"  required></input></br> 
+              <input type="text" name="apellidos_pac"  id="apellidos_pac" class="tam1" placeholder="Apellidos" required></input></br>
+              <p>Genero</p>
+              <input type="radio" name="sexo_pac" id="sexo_pac"  class="rbutton" value="Mujer">Mujer</input></br>
+              <input type="radio" name="sexo_pac" id="sexo_pac"  class="rbutton" value="Hombre">Hombre</input></br>
+              <input type="text" name="domicilio_pac" id="domicilio_pac"  class="tam1" placeholder="Domicilio" required></input></br>
+              <input type="text" name="telefono_pac" id="telefono_pac"  class="tam1" placeholder="Telefono" required></input></br>
+              <input type="text" name="email_pac" id="email_pac"  class="tam1" placeholder="Em@il" required></input></br>
+              <input type="text" name="pass_pac" id="pass_pac"  class="tam1" placeholder="Contraseña" required></input></br>
+              <input type="text" name="status_pac" id="status_pac"  class="tam1" placeholder="Status" required></input></br>
+              <input type="text" name="expediente_pac" id="expediente_pac"  class="tam1" placeholder="Expediente" required></input></br>
+            <input type="submit" value="enviar" class="tbutton"></input>	
+        </form>
+        </div>
+    </div></br>
 
 </div>
 

@@ -1,4 +1,4 @@
-package com.pacientes.controller;
+package com.doctores.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,17 +19,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ConsultaPac
+ * Servlet implementation class ReadDoc
  */
-@WebServlet("/ConsultaPac")
-public class ConsultaPac extends HttpServlet {
+@WebServlet("/ReadDoc")
+public class ReadDoc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
-		PrintWriter salida=response.getWriter();
 		
+		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		Properties props=new Properties();
 		String fileName="config.properties";
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream(fileName);
@@ -42,17 +43,20 @@ public class ConsultaPac extends HttpServlet {
 			throw new FileNotFoundException("Property file "+fileName+" not found");
 		}
 	
+		
 		String url=props.getProperty("urlServer");
 		String usuario=props.getProperty("user");
 		String password=props.getProperty("pass");
 		String driver=props.getProperty("driver");
-		String sql=props.getProperty("ConsultaPac");
-
+		String sql=props.getProperty("ReadDoc");
+		
+		PrintWriter salida = response.getWriter();
+		
 		Connection conn=null;
 		PreparedStatement pstmnt =null;
 		ResultSet rs=null;
-		int id_pac=0;
-		id_pac=Integer.parseInt(request.getParameter("id_paciente"));
+		int id_doc=0;
+		id_doc=Integer.parseInt(request.getParameter("id_doc"));
 
 
 		
@@ -63,50 +67,52 @@ public class ConsultaPac extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_pac);
+			pstmnt.setInt(1, id_doc);
 			
 			rs= pstmnt.executeQuery();
+			
+			RequestDispatcher rd=request.getRequestDispatcher("administraDoc.html");
+			
 			salida.append("<table>");
 			
-			salida.append("<tr>");
-			salida.append("<td> Id paciente: ");
-			salida.append("<td> Nombre paciente: ");
-			salida.append("<td> Apellidos: ");
-			salida.append("<td> Sexo: ");
-			salida.append("<td> Domicilio: ");
-			salida.append("<td> Telefono: ");
-			salida.append("<td> Expediente");
-			salida.append("<td> Incidencias");
+			salida.append("<td> Id doctor </td>");
+			salida.append("<td> Nombre  </td>");
+			salida.append("<td> Apellidos </td>");
+			salida.append("<td> Cedula profesional</td>");
+			salida.append("<td> Sexo </td>");
+			salida.append("<td> Domicilio </td>");
+			salida.append("<td> Telefono </td>");
+			salida.append("<td> Email</td>");
 
 
+			
 			salida.append("</tr>");
-			salida.append("</table");
 
 			while(rs.next()) {
 				
-				salida.append("<table>");
-				
-				
 				salida.append("<tr>");
-				salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("nombre_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("apellidos_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("genero_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("domicilio_paciente")+"</td>");
-				salida.append("<td>"+rs.getInt("telefono_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("expediente_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("incidencia_paciente")+"</td>");
+					salida.append("<td>"+rs.getInt("id_doc")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
+	
+					salida.append("<td>"+rs.getString("apellidos_doc")+"</td>");
+					salida.append("<td>"+rs.getInt("cedula_doc")+"</td>");
+					
+					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
+					
+					salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
+					salida.append("<td>"+rs.getString("email_doc")+"</td>");
 
-
-
-				salida.append("</table");
-
+				
+				salida.append("</tr>");
+			
+			
 			}
-
+			salida.append("</table>");
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 		finally
 		{
@@ -115,8 +121,6 @@ public class ConsultaPac extends HttpServlet {
 				rs.close();
 				pstmnt.close();
 				conn.close();
-				salida.println("<a href=administrador.jsp>index</a>");
-
 				
 			} catch (SQLException e) {
 				
