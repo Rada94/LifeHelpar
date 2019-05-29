@@ -30,7 +30,7 @@ public class UpdateDoc extends HttpServlet {
 		
 		int id_doc =Integer.parseInt(request.getParameter("id_doc"));
 		String nombre_doc = request.getParameter("nombre_doc");
-		String apellido_doc = request.getParameter("apellido_doc");
+		String apellido_doc = request.getParameter("apellidos_doc");
 		String cedula_doc = request.getParameter("cedula_doc");
 		String sexo_doc = request.getParameter("sexo_doc");
 		String domicilio_doc = request.getParameter("domicilio_doc");

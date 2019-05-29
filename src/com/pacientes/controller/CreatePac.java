@@ -38,9 +38,9 @@ public class CreatePac extends HttpServlet {
 		String telefono_pac = request.getParameter("telefono_pac");
 		String email_pac = request.getParameter("email_pac");
 		String pass_pac = request.getParameter("pass_pac");
-		String expediente_pac = request.getParameter("expediente_pac");
-		String incidencia_pac = request.getParameter("incidencia_pac");
-		String cita_pac = request.getParameter("cita_pac");
+		String expediente_pac = "";
+		String incidencia_pac = "";
+		String cita_pac = "";
 
 		
 		//Declaramos e inicializamos las credenciales de acceso

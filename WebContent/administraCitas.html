@@ -66,19 +66,7 @@
 
             </div>
             <!-- /.navbar-collapse -->
-
-				<form name="contact_form" class="default-form contact-form margen"
-					action="CitaPac" method="post">
-					<div class="form-group">
-						<input type="text" name="id_pac" id="id_pac" placeholder="ID del paciente" required=""></br> 
-						<input type="text" name="nombre_doc" id="nombre_doc" placeholder="Nombre del doctor" required=""></input></br> 
-						<input type="datetime-local" name="fecha" id="fecha"></input></br>
-					</div>
-					<button type="submit" class="btn-style-one" name="bntAltaCita"
-						id="bntAltaCita">Dar de alta cita</button>
-
-				</form>
-			</div>
+      </div>
       <!-- /.container-fluid -->
 </nav>
 <!--End Main Header -->
@@ -90,30 +78,30 @@
 <!--<span>Appointment</span>-->
 </h3>
 </div>
-<form name="contact_form" class="default-form contact-form" action="sendmail.php" method="post">
+<form name="alta_citas" class="default-form contact-form" action="CitaPac" method="post">
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="form-group">
-        <input type="text" name="nombre_doc" id = "nombre_doc" placeholder="Nombre Doctor" required="">
+        <p>Ingrese el ID del Doctor</p>
+        <input type="text" name="id_doc" id = "id_doc" placeholder="ID Doctor" required="">
     </div>
     <div class="form-group">
-        <input type="email" name="nombre_pac" id = "nombre_doc" placeholder="Nombre Paciente" required="">
+        <p>Ingrese el ID del Paciente</p>
+        <input type="email" name="id_pac" id = "id_pac" placeholder="ID Paciente" required="">
     </div>
     <div class="form-group">
-        <input type="text" name="Date" placeholder="Date" required="" id="datepicker">
+        <input type="text" name="fecha" placeholder="Date" required="" id="datepicker">
         <i class="fa fa-calendar" aria-hidden="true"></i>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="form-group text-center">
+            <button type="submit" class="btn-style-one" name = "bntAltaCita" id = "bntAltaCita" >Dar de alta cita</button>
+        </div>
     </div>
 </div>
 </div>
 </form>
 
-<form action="btnAltaCita" method="post" >
-  <div class="col-lg-5 col-md-5 col-sm-5">
-      <div class="form-group text-center">
-          <button type="submit" class="btn-style-one" name = "bntAltaCita" id = "bntAltaCita" >Dar de alta cita</button>
-      </div>
-  </div>
-  </form>
   
 </div>                        
 </div>

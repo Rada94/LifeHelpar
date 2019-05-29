@@ -155,12 +155,12 @@
             <p>Consulta doctor</p>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <form action="ConsultaDoc" method="post">
+            <form action="ReadDoc" method="post">
                   <p>Ingrese el ID del doctor que quiere consultar</p>
-                  <input type="text" name="id_doctor" class="tam1" placeholder="ID Doctor"  required></input></br>
+                  <input type="text" name="id_doc" class="tam1" placeholder="ID Doctor"  required></input></br>
                   <input type="submit" value="enviar" class="tbutton"></input>	
             </form>
-          <form action="ConsultaGeneralDoc" method="post"></form>
+          <form action="ReadGeneralDoc" method="post">
           <p>Si quiere una consulta general de click en el boton de abajo</p>
           <input type="submit" value="Consulta General" class="tbutton"></input>	
           </form>
@@ -199,7 +199,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="DeleteDoc" method="post">
               <p>Ingrese el ID del doctor que quiere dar de baja</p>
-                    <input type="text" name="id_doctor" class="tam1"placeholder="ID Doctor" required></input></br>
+                    <input type="text" name="id_doc" class="tam1"placeholder="ID Doctor" required></input></br>
                     <input type="submit" value="enviar" class="tbutton"></input>	
             </form>
           </div>

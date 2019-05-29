@@ -5,3 +5,5 @@ perfil varchar(200) not null,
 emails varchar(255) not null,
 passwords varchar(8) not null
 )engine=InnoDB;
+
+select * from login;

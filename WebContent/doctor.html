@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Nombre del Proyecto</title>
+  <title>Doctor</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +50,7 @@
                               <a href="index.html">Cita</a>
                         </li>
                         <li>
-                              <a href="#irCrud">Administrar</a> <!--Se conecta con el CRUD Administrador-->
+                              <a href="#irCrud">Administra</a> <!--Se conecta con el CRUD Administrador-->
                         </li>
                   </ul>
 
@@ -69,6 +69,23 @@
 =            Page Slider            =
 ==================================-->
 <div class="hero-slider">
+
+  <!-- Slider Item -->
+  <div class="slider-item slide1" style="background-image:url(images/slider/slider-flores.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Slide Content Start -->
+                <div class="content style text-center">
+                    <h2 class="text-white text-bold mb-2">Doctores</h2>
+                    <p class="tag-text mb-5"></p>
+                    
+                </div>
+                <!-- Slide Content End -->
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Slider Item -->
     <div class="slider-item slide1" style="background-image:url(images/slider/slider-flores.jpg)">
         <div class="container">
@@ -116,7 +133,7 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="ConsultaPac" method="post">
           <p>Ingrese el ID del paciente que quiere consultar</p>
-          <input type="text" name="id_paciente" class="tam1" placeholder="ID Paciente"  required></input></br>
+          <input type="text" name="id_pac" class="tam1" placeholder="ID Paciente"  required></input></br>
           <input type="submit" value="Enviar" class="tbutton"></input>	
       </form>
       <form action="ConsultaGeneralPac" method="post"></form>
@@ -133,7 +150,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <form action="UpdatePac" method="post">
               <p>Ingrese el ID del Paciente que quiere modificar</p>
-              <input type="text" name="id_paciente"  class="tam1"placeholder ="ID paciente"  required></input></br>
+              <input type="text" name="id_pac"  class="tam1"placeholder ="ID paciente"  required></input></br>
               <p>Ingrese a continuación los datos que quiere modificar</p>
               <input type="text" name="nombre_pac"  id="nombre_pac" class="tam1" placeholder="Nombre"  required></input></br> 
               <input type="text" name="apellidos_pac"  id="apellidos_pac" class="tam1" placeholder="Apellidos" required></input></br>
@@ -144,12 +161,25 @@
               <input type="text" name="telefono_pac" id="telefono_pac"  class="tam1" placeholder="Telefono" required></input></br>
               <input type="text" name="email_pac" id="email_pac"  class="tam1" placeholder="Em@il" required></input></br>
               <input type="text" name="pass_pac" id="pass_pac"  class="tam1" placeholder="Contraseña" required></input></br>
-              <input type="text" name="status_pac" id="status_pac"  class="tam1" placeholder="Status" required></input></br>
-              <input type="text" name="expediente_pac" id="expediente_pac"  class="tam1" placeholder="Expediente" required></input></br>
             <input type="submit" value="enviar" class="tbutton"></input>	
         </form>
         </div>
     </div></br>
+
+    <div class="dropdown">
+        <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Agregue expediente</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="expediente" method="post">
+              <p>Ingrese el ID del paciente al que quiere agregar un expediente</p>
+              <input type="text" name="id_pac" class="tam1" placeholder="ID Paciente"  required></input></br>
+              <p>Ingrese la información que quiere agregar al expediente</p>
+              <input type="text" name="expediente" class="tam1" placeholder="Información paciente"  required></input></br>
+              <input type="submit" value="Enviar" class="tbutton"></input>	
+          </form>
+          </div>
+      </div></br>
 
 </div>
 
