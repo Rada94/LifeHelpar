@@ -7,8 +7,8 @@ apellidos_adm varchar(150) NOT NULL,     /*referencia para asignar el apellido p
 puesto_adm varchar(200) NOT NULL, /*referencia para asignar el puesto del administrativo (secretaria, director, etc), es de tipo text, puede ser modificado y es not null*/
 sexo_adm varchar(12) NOT NULL,	/*referencia para asignar el sexo de los administrativo, es de tipo varchar,no puede estar vacio(femenino, masculino) y no puede ser modificado*/
 domicilio_adm varchar(300) NOT NULL,	/*referencia para asignar el domicilio(calle, numero) de los administrativo, es de tipo text,no puede estar vacio y puede ser modificado*/
-telefono_adm int NOT NULL, /*referencia para asignar telefono principal de contacto con el administrativo, es de tipo varchar, no puede estar vacio y puede ser modificado*/
-email_adm varchar(255) NOT NULL , /*referencia para asignar e-mail para administrativo, es de tipo text, no puede estar vacio y puede ser modificado*/
+telefono_adm varchar(20) NOT NULL, /*referencia para asignar telefono principal de contacto con el administrativo, es de tipo varchar, no puede estar vacio y puede ser modificado*/
+email_adm varchar(255) NOT NULL unique, /*referencia para asignar e-mail para administrativo, es de tipo text, no puede estar vacio y puede ser modificado*/
 pass_adm varchar(8) NOT NULL, /*contraseña del administrativo*/
 PRIMARY KEY(id_adm)
 )ENGINE=InnoDB;
@@ -16,7 +16,8 @@ PRIMARY KEY(id_adm)
 DELIMITER //
 CREATE TRIGGER admin_to_login AFTER INSERT ON administrativos FOR EACH ROW
 BEGIN
-	INSERT INTO login (perfil, emails, passwords) VALUES (NEW.puesto_adm, NEW.email_adm, NEW.pass_adm);
+	INSERT INTO login (perfil, emails, passwords) VALUES ("adm", NEW.email_adm, NEW.pass_adm);
 END; //
 
 desc administrativos;
+select * from administrativos;

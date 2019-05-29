@@ -95,7 +95,7 @@ public class ReadGeneralDoc extends HttpServlet {
 					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
 					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
+					salida.append("<td>"+rs.getString("telefono_doc")+"</td>");
 					salida.append("<td>"+rs.getString("email_doc")+"</td>");
 
 				
@@ -103,9 +103,7 @@ public class ReadGeneralDoc extends HttpServlet {
 
 			
 			}
-			salida.append("</table");
-			
-
+			salida.append("</table>");
 			rd.include(request, response);	
 		
 			

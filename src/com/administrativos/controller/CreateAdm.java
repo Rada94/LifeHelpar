@@ -88,7 +88,7 @@ public class CreateAdm extends HttpServlet{
 //				salida.append(driver);
 				
 				
-				RequestDispatcher rd = request.getRequestDispatcher("adminstra.html");
+				RequestDispatcher rd = request.getRequestDispatcher("administra.html");
 				if(rs>0)
 				{
 					response.getWriter().append("<p>Elemento fue creado con éxito</p>");

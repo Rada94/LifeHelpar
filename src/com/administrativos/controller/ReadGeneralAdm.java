@@ -90,7 +90,7 @@ public class ReadGeneralAdm extends HttpServlet {
 					salida.append("<td>"+rs.getString("apellidos_adm")+"</td>");
 					salida.append("<td>"+rs.getString("puesto_adm")+"</td>");
 					
-					salida.append("<td>"+rs.getString("sexo_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_adm")+"</td>");
 					salida.append("<td>"+rs.getString("domicilio_adm")+"</td>");
 					
 					salida.append("<td>"+rs.getString("telefono_adm")+"</td>");

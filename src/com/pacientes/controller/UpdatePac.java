@@ -36,8 +36,6 @@ public class UpdatePac extends HttpServlet {
 		String telefono_pac = request.getParameter("telefono_pac");
 		String email_pac=request.getParameter("email_pac");
 		String pass_pacc=request.getParameter("pass_pac");
-		String expediente_pac = request.getParameter("expediente_pac");
-		String incidencia_pac = request.getParameter("incidencia_pac");
 		
 		//Declaramos e inicializamos las credenciales de acceso
 		Properties props=new Properties();
@@ -82,9 +80,7 @@ public class UpdatePac extends HttpServlet {
 			pstmnt.setString(5, telefono_pac);
 			pstmnt.setString(6, email_pac);
 			pstmnt.setString(7, pass_pacc);
-			pstmnt.setString(8, expediente_pac);
-			pstmnt.setString(9, incidencia_pac);
-			pstmnt.setInt(10, id_pac);
+			pstmnt.setInt(8, id_pac);
 			
 			rs= pstmnt.executeUpdate();
 			

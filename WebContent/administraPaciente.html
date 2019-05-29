@@ -142,8 +142,7 @@
           <input type="text" name="telefono_pac" id="telefono_pac"  class="tam1" placeholder="Telefono" required></input></br>
           <input type="text" name="email_pac" id="email_pac"  class="tam1" placeholder="Em@il" required></input></br>
           <input type="text" name="pass_pac" id="pass_pac"  class="tam1" placeholder="Contraseña" required></input></br>
-          <p>Fecha de la cita</p></br>
-      	  <input type="datetime-local" name="citaFecha_pac" id="citaFecha_pac"></input></br>
+      
           <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
       </form>
       </div>
@@ -156,10 +155,9 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="ReadPac" method="post">
           <p>Ingrese el ID del paciente que quiere consultar</p>
-          <input type="text" name="id_paciente" class="tam1" placeholder="ID del paciente"  required></input></br>
+          <input type="text" name="id_pac" class="tam1" placeholder="ID del paciente"  required></input></br>
           <input type="submit" value="enviar" class="tbutton"></input>	
       </form>
-      
       <form action="ReadGeneralPac" method="post">
           <p>Si quiere una consulta general de click en el boton de abajo</p>
           <input type="submit" value="Consulta General" class="tbutton"></input>	
@@ -174,7 +172,7 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="UpdatePac" method="post">
             <p>Ingrese el ID del Paciente que quiere modificar</p>
-            <input type="text" name="id_paciente"  class="tam1"placeholder ="ID paciente"  required></input></br>
+            <input type="text" name="id_pac"  class="tam1"placeholder ="ID paciente"  required></input></br>
             <p>Ingrese a continuación los datos que quiere modificar</p>
             <input type="text" name="nombre_pac"  id="nombre_pac" class="tam1" placeholder="Nombre"  required></input></br> 
             <input type="text" name="apellidos_pac"  id="apellidos_pac" class="tam1" placeholder="Apellidos" required></input></br>
@@ -198,7 +196,7 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <form action="DeletePac" method="post">
             <p>Ingrese el ID del paciente que quiere dar de baja</p>
-          <input type="text" name="id_paciente" class="tam1"placeholder="ID Paciente" required></input></br>
+          <input type="text" name="id_pac" class="tam1"placeholder="ID Paciente" required></input></br>
           <input type="submit" value="enviar" class="tbutton"></input>	
       </form>
       </div>
