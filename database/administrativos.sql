@@ -8,7 +8,7 @@ puesto_adm varchar(200) NOT NULL, /*referencia para asignar el puesto del admini
 sexo_adm varchar(12) NOT NULL,	/*referencia para asignar el sexo de los administrativo, es de tipo varchar,no puede estar vacio(femenino, masculino) y no puede ser modificado*/
 domicilio_adm varchar(300) NOT NULL,	/*referencia para asignar el domicilio(calle, numero) de los administrativo, es de tipo text,no puede estar vacio y puede ser modificado*/
 telefono_adm int NOT NULL, /*referencia para asignar telefono principal de contacto con el administrativo, es de tipo varchar, no puede estar vacio y puede ser modificado*/
-email_adm varchar(90) NOT NULL , /*referencia para asignar e-mail para administrativo, es de tipo text, no puede estar vacio y puede ser modificado*/
+email_adm varchar(255) NOT NULL , /*referencia para asignar e-mail para administrativo, es de tipo text, no puede estar vacio y puede ser modificado*/
 pass_adm varchar(8) NOT NULL, /*contraseña del administrativo*/
 PRIMARY KEY(id_adm)
 )ENGINE=InnoDB;
