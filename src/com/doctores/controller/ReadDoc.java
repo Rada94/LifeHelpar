@@ -55,8 +55,8 @@ public class ReadDoc extends HttpServlet {
 		Connection conn=null;
 		PreparedStatement pstmnt =null;
 		ResultSet rs=null;
-		int id_doctor=0;
-		id_doctor=Integer.parseInt(request.getParameter("id_doctor"));
+		int id_doc=0;
+		id_doc=Integer.parseInt(request.getParameter("id_doc"));
 
 
 		
@@ -67,7 +67,7 @@ public class ReadDoc extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_doctor);
+			pstmnt.setInt(1, id_doc);
 			
 			rs= pstmnt.executeQuery();
 			
@@ -83,7 +83,6 @@ public class ReadDoc extends HttpServlet {
 			salida.append("<td> Domicilio </td>");
 			salida.append("<td> Telefono </td>");
 			salida.append("<td> Email</td>");
-			salida.append("<td> Pass: </td>");
 
 
 			
@@ -92,26 +91,25 @@ public class ReadDoc extends HttpServlet {
 			while(rs.next()) {
 				
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("id_doc")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
 	
-					salida.append("<td>"+rs.getString("apellidos_doctor")+"</td>");
-					salida.append("<td>"+rs.getInt("cedula_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_doc")+"</td>");
+					salida.append("<td>"+rs.getInt("cedula_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getString("genero_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getInt("telefono_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("email_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("pass_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
+					salida.append("<td>"+rs.getString("email_doc")+"</td>");
 
 				
 				salida.append("</tr>");
-			salida.append("</table>");
-
-			rd.include(request, response);
+			
 			
 			}
+			salida.append("</table>");
+			rd.include(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

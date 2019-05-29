@@ -27,7 +27,7 @@ public class ReadAdm extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_administrativo= Integer.parseInt(request.getParameter("id_adm"));
+		int id_adm= Integer.parseInt(request.getParameter("id_adm"));
 		
 		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		Properties props=new Properties();
@@ -66,7 +66,7 @@ public class ReadAdm extends HttpServlet {
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
 			
-			pstmnt.setInt(1, id_administrativo);
+			pstmnt.setInt(1, id_adm);
 			rs= pstmnt.executeQuery();
 			
 			RequestDispatcher rd=request.getRequestDispatcher("administra.html");
@@ -80,32 +80,32 @@ public class ReadAdm extends HttpServlet {
 			salida.append("<td> Domicilio </td>");
 			salida.append("<td> Telefono </td>");
 			salida.append("<td> Email</td>");
-			salida.append("<td> Pass: </td>");
 
 			salida.append("</tr>");
 
 			while(rs.next()) {
 				
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_administrativo")+"</td>");
+					salida.append("<td>"+rs.getInt("id_adm")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_adm")+"</td>");
 	
-					salida.append("<td>"+rs.getString("apellidos_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("puesto_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("genero_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("telefono_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("email_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("pass_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_adm")+"</td>");
+					salida.append("<td>"+rs.getString("puesto_adm")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_adm")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_adm")+"</td>");
+					salida.append("<td>"+rs.getString("telefono_adm")+"</td>");
+					salida.append("<td>"+rs.getString("email_adm")+"</td>");
+					salida.append("<td>"+rs.getString("pass_adm")+"</td>");
 					
 
 
 				
 				salida.append("</tr>");
-			salida.append("</table>");
+			
 
 				
 			}
+			salida.append("</table>");
 			rd.include(request, response);
 			
 		} catch (Exception e) {

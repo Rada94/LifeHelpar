@@ -78,8 +78,8 @@ public class ReadGeneralPac extends HttpServlet {
 			salida.append("<td> Telefono </td>");
 			salida.append("<td> Email </td>");
 			salida.append("<td> Expediente</td>");
-			salida.append("<td> Status </td>");
-			salida.append("<td> Incidencia </td>");
+			salida.append("<td> Incidencias </td>");
+			salida.append("<td> Citas </td>");
 
 
 
@@ -89,18 +89,18 @@ public class ReadGeneralPac extends HttpServlet {
 			while(rs.next()) {
 				
 				salida.append("<tr>");
-				salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("nombre_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("apellidos_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("genero_paciente")+"</td>");		
+				salida.append("<td>"+rs.getInt("id_pac")+"</td>");
+				salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
+				salida.append("<td>"+rs.getString("apellidos_pac")+"</td>");
+				salida.append("<td>"+rs.getString("sexo_pac")+"</td>");		
 				
-				salida.append("<td>"+rs.getString("domicilio_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("telefono_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("email_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
+				salida.append("<td>"+rs.getString("telefono_pac")+"</td>");
+				salida.append("<td>"+rs.getString("email_pac")+"</td>");
 				
-				salida.append("<td>"+rs.getString("expediente_paciente")+"</td>");					
-				salida.append("<td>"+rs.getString("status_paciente")+"</td>");
-				salida.append("<td>"+rs.getString("incidencia_paciente")+"</td>");
+				salida.append("<td>"+rs.getString("expediente_pac")+"</td>");					
+				salida.append("<td>"+rs.getString("incidencia_pac")+"</td>");
+				salida.append("<td>"+rs.getString("cita_pac")+"</td>");
 
 
 				

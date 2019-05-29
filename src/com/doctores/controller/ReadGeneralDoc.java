@@ -78,7 +78,6 @@ public class ReadGeneralDoc extends HttpServlet {
 					salida.append("<td> Domicilio </td>");
 					salida.append("<td> Telefono </td>");
 					salida.append("<td> Email</td>");
-					salida.append("<td> Pass: </td>");
 
 				salida.append("</tr>");
 			rs= pstmnt.executeQuery();
@@ -87,18 +86,17 @@ public class ReadGeneralDoc extends HttpServlet {
 				
 			
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("id_doc")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
 	
-					salida.append("<td>"+rs.getString("apellidos_doctor")+"</td>");
-					salida.append("<td>"+rs.getInt("cedula_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_doc")+"</td>");
+					salida.append("<td>"+rs.getInt("cedula_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getString("genero_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_doctor")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
 					
-					salida.append("<td>"+rs.getInt("telefono_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("email_doctor")+"</td>");
-					salida.append("<td>"+rs.getString("pass_doctor")+"</td>");
+					salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
+					salida.append("<td>"+rs.getString("email_doc")+"</td>");
 
 				
 				salida.append("</tr>");

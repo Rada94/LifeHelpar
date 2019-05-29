@@ -28,7 +28,7 @@ public class DeletePac extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_pac= Integer.parseInt(request.getParameter("id_paciente"));
+		int id_pac= Integer.parseInt(request.getParameter("id_pac"));
 		
 		
 		//Declaramos e inicializamos las credenciales de acceso

@@ -28,7 +28,7 @@ public class DeleteDoc extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html charset='utf-8'");
 		
-		int id_doctor= Integer.parseInt(request.getParameter("id_doctor"));
+		int id_doc= Integer.parseInt(request.getParameter("id_doc"));
 		
 		
 		//Declaramos e inicializamos las credenciales de acceso
@@ -68,7 +68,7 @@ public class DeleteDoc extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_doctor);
+			pstmnt.setInt(1, id_doc);
 			
 			rs= pstmnt.executeUpdate();
 			

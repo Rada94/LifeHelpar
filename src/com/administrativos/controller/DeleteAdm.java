@@ -29,7 +29,7 @@ public class DeleteAdm extends HttpServlet {
     	
     	response.setContentType("text/html charset='utf-8'");
 		
-		int id_administrativo= Integer.parseInt(request.getParameter("id_adm"));
+		int id_adm= Integer.parseInt(request.getParameter("id_adm"));
 		
 		
 		//Declaramos e inicializamos las credenciales de acceso
@@ -68,7 +68,7 @@ public class DeleteAdm extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_administrativo);
+			pstmnt.setInt(1, id_adm);
 			
 			rs= pstmnt.executeUpdate();
 			

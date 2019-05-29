@@ -27,8 +27,7 @@ public class ReadGeneralAdm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html charset='utf-8'");
-		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-
+		
 		Properties props=new Properties();
 		String fileName="config.properties";
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream(fileName);
@@ -77,11 +76,6 @@ public class ReadGeneralAdm extends HttpServlet {
 					salida.append("<td> Domicilio </td>");
 					salida.append("<td> Telefono </td>");
 					salida.append("<td> Email</td>");
-					salida.append("<td> Pass: </td>");
-					
-
-					//salida.append("<td> especialidad: ");
-
 
 				salida.append("</tr>");
 			rs= pstmnt.executeQuery();
@@ -90,47 +84,23 @@ public class ReadGeneralAdm extends HttpServlet {
 				
 			
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_administrativo")+"</td>");
+					salida.append("<td>"+rs.getInt("id_adm")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_adm")+"</td>");
 	
-					salida.append("<td>"+rs.getString("apellidos_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("puesto_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_adm")+"</td>");
+					salida.append("<td>"+rs.getString("puesto_adm")+"</td>");
 					
-					salida.append("<td>"+rs.getString("genero_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_adm")+"</td>");
 					
-					salida.append("<td>"+rs.getString("telefono_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("email_administrativo")+"</td>");
-					salida.append("<td>"+rs.getString("pass_administrativo")+"</td>");
+					salida.append("<td>"+rs.getString("telefono_adm")+"</td>");
+					salida.append("<td>"+rs.getString("email_adm")+"</td>");
 
 				
 				salida.append("</tr>");
 
-			salida.append("</table>");
-				
-				
-				/* 
-				 salida.append("<table>");
-					salida.append("<tr>");
-						salida.append("<td>"+rs.getInt("id_doctor")+"</td>");
-						salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
-		
-						salida.append("<td>"+rs.getString("apellido_doc")+"</td>");
-						salida.append("<td>"+rs.getInt("edad_doc")+"</td>");
-						
-						salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
-						salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
-						
-						salida.append("<td>"+rs.getInt("telefono_doc")+"</td>");
-						salida.append("<td>"+rs.getString("especialidad_doc")+"</td>");
-					
-					salida.append("</tr>");
-
-				salida.append("</table");
-				 */
-
-				
 			}
+			salida.append("</table>");
 			rd.include(request, response);
 			
 		} catch (Exception e) {

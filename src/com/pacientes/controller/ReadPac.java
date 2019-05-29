@@ -56,8 +56,8 @@ public class ReadPac extends HttpServlet {
 		Connection conn=null;
 		PreparedStatement pstmnt =null;
 		ResultSet rs=null;
-		int id_paciente=0;
-		id_paciente=Integer.parseInt(request.getParameter("id_paciente"));
+		int id_pac=0;
+		id_pac=Integer.parseInt(request.getParameter("id_pac"));
 
 
 		
@@ -68,7 +68,7 @@ public class ReadPac extends HttpServlet {
 			conn= DriverManager.getConnection(url,usuario,password);
 			//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 			pstmnt = conn.prepareStatement(sql);
-			pstmnt.setInt(1, id_paciente);
+			pstmnt.setInt(1, id_pac);
 			rs= pstmnt.executeQuery();
 
 			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
@@ -82,8 +82,8 @@ public class ReadPac extends HttpServlet {
 			salida.append("<td> Domicilio </td>");
 			salida.append("<td> Telefono </td>");
 			salida.append("<td> Expediente</td>");
-			salida.append("<td> incidencias : </td>");
-			salida.append("<td> Estado emocional </td>");
+			salida.append("<td> Incidencias </td>");
+			salida.append("<td> Citas </td>");
 
 
 
@@ -93,18 +93,18 @@ public class ReadPac extends HttpServlet {
 			while(rs.next()) {
 				
 				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("apellidos_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("genero_paciente")+"</td>");		
+					salida.append("<td>"+rs.getInt("id_pac")+"</td>");
+					salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
+					salida.append("<td>"+rs.getString("apellidos_pac")+"</td>");
+					salida.append("<td>"+rs.getString("sexo_pac")+"</td>");		
 					
-					salida.append("<td>"+rs.getString("domicilio_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("telefono_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("email_paciente")+"</td>");
+					salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
+					salida.append("<td>"+rs.getString("telefono_pac")+"</td>");
+					salida.append("<td>"+rs.getString("email_pac")+"</td>");
 					
-					salida.append("<td>"+rs.getString("expediente_paciente")+"</td>");					
-					salida.append("<td>"+rs.getString("status_paciente")+"</td>");
-					salida.append("<td>"+rs.getString("incidencia_paciente")+"</td>");
+					salida.append("<td>"+rs.getString("expediente_pac")+"</td>");					
+					salida.append("<td>"+rs.getString("incidencia_pac")+"</td>");
+					salida.append("<td>"+rs.getString("cita_pac")+"</td>");
 
 
 				

@@ -31,14 +31,14 @@ public class CreateAdm extends HttpServlet{
 			response.setContentType("text/html charset='utf-8'");
 			//response.getWriter().append("esta vivo");
 			
-			String nombre_administrativo = request.getParameter("nombre_adm");
-			String apellidos_administrativo = request.getParameter("apellido_adm");
-			String puesto_administrativo = request.getParameter("puesto_adm");
-			String genero_administrativo = request.getParameter("sexo_adm");
-			String domicilio_administrativo = request.getParameter("domicilio_adm");
-			String telefono_administrativo = request.getParameter("telefono_adm");
-			String email_administrativo = request.getParameter("email_adm");
-			String pass_administrativo = request.getParameter("pass_adm");
+			String nombre_adm = request.getParameter("nombre_adm");
+			String apellidos_adm = request.getParameter("apellido_adm");
+			String puesto_adm = request.getParameter("puesto_adm");
+			String sexo_adm = request.getParameter("sexo_adm");
+			String domicilio_adm = request.getParameter("domicilio_adm");
+			String telefono_adm = request.getParameter("telefono_adm");
+			String email_adm = request.getParameter("email_adm");
+			String pass_adm = request.getParameter("pass_adm");
 			
 			//declarar variables de conexion
 			Properties props=new Properties();
@@ -74,14 +74,14 @@ public class CreateAdm extends HttpServlet{
 				conn= DriverManager.getConnection(url,usuario,password);
 				//se apunta el objeto statement que nos sirve para ejecutar comandos en la base de datos (se crea la consolo de comandos que apuntan a esa conexion)
 				pstmnt = conn.prepareStatement(sql);
-				pstmnt.setString(1, nombre_administrativo);
-				pstmnt.setString(2, apellidos_administrativo);
-				pstmnt.setString(3, puesto_administrativo);
-				pstmnt.setString(4, genero_administrativo);
-				pstmnt.setString(5, domicilio_administrativo);
-				pstmnt.setString(6, telefono_administrativo);
-				pstmnt.setString(7, email_administrativo);
-				pstmnt.setString(8, pass_administrativo);
+				pstmnt.setString(1, nombre_adm);
+				pstmnt.setString(2, apellidos_adm);
+				pstmnt.setString(3, puesto_adm);
+				pstmnt.setString(4, sexo_adm);
+				pstmnt.setString(5, domicilio_adm);
+				pstmnt.setString(6, telefono_adm);
+				pstmnt.setString(7, email_adm);
+				pstmnt.setString(8, pass_adm);
 				
 				
 				rs= pstmnt.executeUpdate();           
