@@ -15,9 +15,21 @@ cita_pac varchar(1200) not null, /*Fecha y hora del cometario del doctor al paci
 primary key(id_pac))ENGINE=InnoDB;
 
 DELIMITER //
-CREATE TRIGGER paciente_to_login AFTER INSERT ON pacientes FOR EACH ROW
+CREATE TRIGGER ins_pac_login AFTER INSERT ON pacientes FOR EACH ROW
 BEGIN
-	INSERT INTO login (perfil, emails, passwords) VALUES ("pac", NEW.email_pac, NEW.pass_pac);
+	INSERT INTO login (ids, perfiles, emails, passwords) VALUES (NEW.id_pac,"pac", NEW.email_pac, NEW.pass_pac);
+END; //
+
+DELIMITER //
+CREATE TRIGGER del_pac_login AFTER DELETE ON pacientes FOR EACH ROW
+BEGIN
+	DELETE FROM login WHERE (ids=OLD.id_pac AND perfiles="pac");
+END; //
+
+DELIMITER //
+CREATE TRIGGER upd_pac_login AFTER UPDATE ON pacientes FOR EACH ROW
+BEGIN
+	UPDATE login SET emails=NEW.email_pac, passwords=NEW.pass_pac WHERE (ids=OLD.id_pac AND perfiles="pac");
 END; //
 
 describe pacientes;
