@@ -32,5 +32,6 @@ BEGIN
 	UPDATE login SET emails=NEW.email_pac, passwords=NEW.pass_pac WHERE (ids=OLD.id_pac AND perfiles="pac");
 END; //
 
-describe pacientes;
+
 select * from pacientes;
+describe pacientes;

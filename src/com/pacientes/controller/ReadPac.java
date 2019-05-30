@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pacientes.model.Paciente;
 
 /**
  * Servlet implementation class ReadPac
@@ -27,7 +30,8 @@ public class ReadPac extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html charset='utf-8'");
+		
+		ArrayList<Paciente> listaPacientes=new ArrayList<Paciente>();
 		
 		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		Properties props=new Properties();
@@ -50,7 +54,7 @@ public class ReadPac extends HttpServlet {
 		String driver=props.getProperty("driver");
 		String sql=props.getProperty("ReadPac");
 		
-		PrintWriter salida = response.getWriter();
+		PrintWriter out = response.getWriter();
 
 		
 		Connection conn=null;
@@ -71,48 +75,26 @@ public class ReadPac extends HttpServlet {
 			pstmnt.setInt(1, id_pac);
 			rs= pstmnt.executeQuery();
 
-			RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.html");
-			salida.append("<table>");
-			
-			salida.append("<td> Id paciente </td>");
-			salida.append("<td> Nombre  </td>");
-			salida.append("<td> Apellidos </td>");
-			salida.append("<td> Edad</td>");
-			salida.append("<td> Sexo </td>");
-			salida.append("<td> Domicilio </td>");
-			salida.append("<td> Telefono </td>");
-			salida.append("<td> Expediente</td>");
-			salida.append("<td> Incidencias </td>");
-			salida.append("<td> Citas </td>");
-
-
-
-			
-			salida.append("</tr>");
-
 			while(rs.next()) {
-				
-				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_pac")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_pac")+"</td>");
-					salida.append("<td>"+rs.getString("apellidos_pac")+"</td>");
-					salida.append("<td>"+rs.getString("sexo_pac")+"</td>");		
-					
-					salida.append("<td>"+rs.getString("domicilio_pac")+"</td>");
-					salida.append("<td>"+rs.getString("telefono_pac")+"</td>");
-					salida.append("<td>"+rs.getString("email_pac")+"</td>");
-					
-					salida.append("<td>"+rs.getString("expediente_pac")+"</td>");					
-					salida.append("<td>"+rs.getString("incidencia_pac")+"</td>");
-					salida.append("<td>"+rs.getString("cita_pac")+"</td>");
-
-
-				
-				salida.append("</tr>");
+				listaPacientes.add(new Paciente(
+						rs.getInt("id_pac"),
+						rs.getString("nombre_pac"),
+						rs.getString("apellidos_pac"),
+						rs.getString("sexo_pac"), 
+						rs.getString("domicilio_pac"), 
+						rs.getString("telefono_pac"),
+						rs.getString("email_pac"),
+						rs.getString("expediente_pac"),
+						rs.getString("incidencia_pac"),
+						rs.getString("cita_pac")
+							)
+						);
+				}
 			
-			}
-			salida.append("</table>");
-			rd.include(request, response);
+				RequestDispatcher rd=request.getRequestDispatcher("administraPaciente.jsp");
+				request.setAttribute("listaPacientes", listaPacientes);
+				
+				rd.forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -130,7 +112,7 @@ public class ReadPac extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		salida.close();
+		out.close();
 	}
 
 }

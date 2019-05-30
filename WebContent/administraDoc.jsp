@@ -1,9 +1,13 @@
+<%@page import="com.doctores.model.Doctor"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>Nombre del Proyecto</title>
+  <title>Doctor</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,16 +34,6 @@
     <!-- <div class="preloader"></div> -->
     <!-- Preloader -->
 
-<!--header top-->
-<div class="header-top">
-      <div class="container clearfix">
-            <div class="top-left">
-                  <h6>Hora de atención Lunes a Viernes de 10am a 20hrs. Sábados 10am - 17hrs </h6>
-            </div>
-      </div>
-</div>
-<!--header top-->
- 
 <!--Main Header-->
 <nav class="navbar navbar-default">
       <div class="container">
@@ -57,54 +51,18 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                         <li class="active">
-                              <a href="index.html">Inicio</a>
+                              <a href="administraPaciente.html">Administrar Pacientes</a> <!--Se conecta con el CRUD Administrador-->
                         </li>
                         <li>
-                              <a href="about.html">Acerca de Nosotros</a>
-                        </li>
-                        <li>
-                              <a href="contact.html">Contactanos</a>
-                        </li>
+                          <a href="administraCitas.html">Administrar Citas</a> 
+                    </li>
+                    <li class="active">
+                      <a href="administra.html">Principal</a> <!--Se conecta con el CRUD Administrador-->
+                    </li>
                   </ul>
 
                 <!-- Boton Login-->
-                  <!--<a href="F:\Generation\workspace\ProyectoSubirGit\LifeHelperFullStack\Login_v17\login.html"  id = "btnLogin" class="btn btn-info btn-lg">Login</a> -->
-
-                  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-                  <div id="id01" class="modal">
-                    
-                    <form class="modal-content animate" action="/action_page.php">
-                      <div class="imgcontainer">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                        <img src="images/login.jpg" alt="Avatar" class="avatar">
-                      </div>
-
-                      <div class="container">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                          
-                        <button type="submit">Login</button>
-                        <!-- Trabajar con la forma en la que se haria esta parte para recordar la información del usuario en su equipo,
-                          Pero es opcional
-                        <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                        -->
-                      </div>
-
-                      <div class="container" style="background-color:#f1f1f1">
-                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                      <!--    Aquí tenemos que trabajar con la recuperación del password. Pero es opcional 
-                      <span class="psw">Forgot <a href="#">password?</a></span>  -->  
-                      </div> 
-                    </form>
-                  </div>
-
-
+                  <a href="index.html"  id = "btnLogin" class="btn btn-info btn-lg">Cerrar Sesion</a>
                 <!-- Fin Boton Login-->  
 
             </div>
@@ -125,9 +83,9 @@
                 <div class="col-12">
                     <!-- Slide Content Start -->
                     <div class="content style text-center">
-                        <h2 class="text-white text-bold mb-2">Página principal para hacer login o ver información de la clinica</h2>
-                        <p class="tag-text mb-5">Aquí va la información de la página de presentación</p>
-                        <!--<a href="#" class="btn btn-main btn-white">explore</a> -->
+                        <h2 class="text-white text-bold mb-2">Administra a los Doctores</h2>
+                        <p class="tag-text mb-5">Desde aquí se puede dar de alta, consultar, modificar y eliminar la información de los Doctores</p>
+                        <a href="#irCrudDoc" class="btn btn-main btn-white">Ir a Crear,Modificar,Buscar o Borrar</a>
                     </div>
                     <!-- Slide Content End -->
                 </div>
@@ -141,9 +99,9 @@
                 <div class="col-12">
                     <!-- Slide Content Start-->
                     <div class="content style text-right">
-                        <h2 class="text-white"><br>Acerca de la clinica</h2>
-                        <p class="tag-text">Historia de la clinica
-                        <a href="about.html" class="btn btn-main btn-white">Acerca de nosotros</a>
+                        <h2 class="text-white"><br></h2>
+                        <p class="tag-text">Ir a la administración de los pacientes
+                        <a href="administraPaciente.html" class="btn btn-main btn-white">Ir Pacientes</a>
                     </div>
                     <!-- Slide Content End-->
                 </div>
@@ -157,9 +115,9 @@
                 <div class="col-12">
                     <!-- Slide Content Start -->
                     <div class="content text-center style">
-                        <h2 class="text-white text-bold mb-2">Contactanos</h2>
-                        <p class="tag-text mb-5">Información de como contactar con la clinica, correo, telefonos, etc.</p>
-                        <a href="contact.html" class="btn btn-main btn-white">Contactanos</a>
+                        <h2 class="text-white text-bold mb-2"></h2>
+                        <p class="tag-text mb-5">Ir a la página principal</p>
+                        <a href="administra.html" class="btn btn-main btn-white">Principal</a>
                     </div>
                     <!-- Slide Content End -->
                 </div>
@@ -170,40 +128,128 @@
 
 <!--====  End of Page Slider  ====-->
 
-<section class="cta">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="cta-block">
-                    <div class="emmergency item">
-                        <i class="fa fa-phone"></i>
-                        <h2>Emegency Cases</h2>
-                        <a href="#">1-800-700-6200</a>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="top-doctor item">
-                        <i class="fa fa-stethoscope"></i>
-                        <h2>24 Hour Service</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore dignissimos officia dicta suscipit vel eum</p>
-                        <a href="#" class="btn btn-main">Read more</a>
-                    </div>
-                    <div class="working-time item">
-                        <i class="fa fa-hourglass-o"></i>
-                        <h2>Working Hours</h2>
-                        <ul class="w-hours">
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                            <li>Mon - Fri  - <span>8:00 - 17:00</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--====  CRUD para administrar al Doctor  ====-->
+
+
+<div class="formato" id = "irCrudDoc">
+	
+    <div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Crear Doctor</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="CreateDoc" method="post" >
+                    <input type="text" name="nombre_doc"  id="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
+                    <input type="text" name="apellidos_doc"  id="apellidos_doc" class="tam1" placeholder="Apellidos" required></input></br>
+                    <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Cedula" required></textarea></br>
+                    <p> Genero</p>
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Mujer">Mujer</input></br>
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Hombre">Hombre</input></br>
+                    <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
+                    <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@il" required> </input>
+                    <input type="text" name="pass_doc" id="pass_doc" class="tam1" placeholder="Password" required> </input>
+                    <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
+            </form>
+          </div>
+    </div></br>
+    
+    <div class="dropdown">
+        <button class=" tam " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Consulta doctor</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="ReadDoc" method="post">
+                  <p>Ingrese el ID del doctor que quiere consultar</p>
+                  <input type="text" name="id_doc" class="tam1" placeholder="ID Doctor"  required></input></br>
+                  <input type="submit" value="enviar" class="tbutton"></input>	
+            </form>
+          <form action="ReadGeneralDoc" method="post">
+          <p>Si quiere una consulta general de click en el boton de abajo</p>
+          <input type="submit" value="Consulta General" class="tbutton"></input>	
+          </form>
+          </div>
+    </div></br>
+    
+    <div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Modifica doctor</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="UpdateDoc" method="post">
+                    <p>Ingrese el ID del Doctor que quiere modificar</p>
+                    <input type="text" name="id_doc"  class="tam1"placeholder ="ID Doctor"  required></input></br>
+                    <p>Ingrese a continuación los datos que quiere modificar</p>
+                    <input type="text" name="nombre_doc"  id="nombre_doc" class="tam1" placeholder="Nombre"  required></input></br> 
+                    <input type="text" name="apellidos_doc"  id="apellidos_doc" class="tam1" placeholder="Apellidos" required></input></br>
+                    <input type="text" name="cedula_doc" id="cedula_doc" class="tam1"    rows="4" cols="32" placeholder="Cedula" required></textarea></br>
+                    <p> Genero</p>
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Mujer">Mujer</input></br>
+                    <input type="radio" name="sexo_doc" id="sexo_doc"  class="rbutton" value="Hombre">Hombre</input></br>
+                    <input type="text" name="domicilio_doc" id="domicilio_doc"  class="tam1" placeholder="Domicilio" required></input></br>
+                    <input type="text" name="telefono_doc" id="telefono_doc"  class="tam1" placeholder="Telefono" required></input></br>
+                    <input type="text" name="email_doc" id="email_doc" class="tam1" placeholder="Em@il" required> </input>
+                    <input type="text" name="pass_doc" id="pass_doc" class="tam1" placeholder="Password" required> </input>
+                    <input type="submit" value="enviar" id=""  class="tbutton" ></input>	
+            </form>
+          </div>
+    </div></br>
+
+    <div class="dropdown">
+        <button class="tam" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p>Baja Doctor</p>
+          </button>
+    
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form action="DeleteDoc" method="post">
+              <p>Ingrese el ID del doctor que quiere dar de baja</p>
+                    <input type="text" name="id_doc" class="tam1"placeholder="ID Doctor" required></input></br>
+                    <input type="submit" value="enviar" class="tbutton"></input>	
+            </form>
+          </div>
     </div>
-</section>
+    
+</div>
 
+<!--Desplegue de tablas-->
+<div id="tablas">
+	<table >
+		<thead >
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Cedula</th>
+				<th>Sexo</th>
+				<th>Domicilio</th>
+				<th>Telefono</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+	<tbody>
+	
+<%
 
+ArrayList<Doctor> listaDoctores = (ArrayList<Doctor>) request.getAttribute("listaDoctores"); 
 
+for(Doctor doctor : listaDoctores)
+{
+	out.println("<tr>");
+	out.println("<td>"+doctor.getId()+"</td>");
+	out.println("<td>"+doctor.getNombre()+"</td>");
+	out.println("<td>"+doctor.getApellidos()+"</td>");
+	out.println("<td>"+doctor.getCedula()+"</td>");
+	out.println("<td>"+doctor.getSexo()+"</td>");
+	out.println("<td>"+doctor.getDomicilio()+"</td>");
+	out.println("<td>"+doctor.getTelefono()+"</td>");
+	out.println("<td>"+doctor.getEmail()+"</td>");
+	out.println("</tr>");
+}
+%>
+
+		</tbody>
+	</table>
+</div>
 
 <!--footer-main-->
 <footer class="footer-main">
@@ -318,21 +364,7 @@
 <script src="plugins/jquery-ui.js"></script>
 <script src="plugins/timePicker.js"></script>
 <script src="js/script.js"></script>
-
-<script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
-
 </body>
-  
 
 </html>
 
