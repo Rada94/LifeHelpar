@@ -13,9 +13,21 @@ pass_doc varchar(8) not null, /*Contraseña de doc*/
 primary key (id_doc))ENGINE=InnoDB;
 
 DELIMITER //
-CREATE TRIGGER doc_to_login AFTER INSERT ON doctores FOR EACH ROW
+CREATE TRIGGER ins_doc_login AFTER INSERT ON doctores FOR EACH ROW
 BEGIN
-	INSERT INTO login (perfil, emails, passwords) VALUES ("doc", NEW.email_doc, NEW.pass_doc);
+	INSERT INTO login (ids, perfiles, emails, passwords) VALUES (NEW.id_doc,"doc", NEW.email_doc, NEW.pass_doc);
+END; //
+
+DELIMITER //
+CREATE TRIGGER del_doc_login AFTER DELETE ON doctores FOR EACH ROW
+BEGIN
+	DELETE FROM login WHERE (ids=OLD.id_doc AND perfiles="doc");
+END; //
+
+DELIMITER //
+CREATE TRIGGER upd_doc_login AFTER UPDATE ON doctores FOR EACH ROW
+BEGIN
+	UPDATE login SET emails=NEW.email_doc, passwords=NEW.pass_doc WHERE (ids=OLD.id_doc AND perfiles="doc");
 END; //
 
 desc doctores;

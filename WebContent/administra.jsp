@@ -1,3 +1,7 @@
+<%@page import="com.administrativos.model.Administrativo"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -225,6 +229,46 @@
 
 
     <!--====  End CRUD Administrador  ====-->
+
+<!--Desplegue de tablas-->
+<div  id="tablas">
+	<table >
+		<thead >
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Cedula</th>
+				<th>Sexo</th>
+				<th>Domicilio</th>
+				<th>Telefono</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+	<tbody>
+	
+<%
+
+ArrayList<Administrativo> listaAdministrativos = (ArrayList<Administrativo>) request.getAttribute("listaAdministrativos"); 
+
+for(Administrativo administrativo : listaAdministrativos)
+{
+	out.println("<tr>");
+	out.println("<td>"+administrativo.getId()+"</td>");
+	out.println("<td>"+administrativo.getNombre()+"</td>");
+	out.println("<td>"+administrativo.getApellidos()+"</td>");
+	out.println("<td>"+administrativo.getPuesto()+"</td>");
+	out.println("<td>"+administrativo.getSexo()+"</td>");
+	out.println("<td>"+administrativo.getDomicilio()+"</td>");
+	out.println("<td>"+administrativo.getTelefono()+"</td>");
+	out.println("<td>"+administrativo.getEmail()+"</td>");
+	out.println("</tr>");
+}
+%>
+
+		</tbody>
+	</table>
+</div>
 
 
 <!--footer-main-->

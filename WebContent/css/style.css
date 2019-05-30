@@ -3689,3 +3689,37 @@ span.psw {
     width: 100%;
   }
 } 
+
+/* Table style */
+#tablas
+{
+	width: 98%;
+	margin: 0px 5px 20px 5px;
+}
+
+table{
+       
+        margin top: 10px;
+        width: 100%;
+    }
+    th,td{
+        margin-left: 0;
+        text-align: left;
+        border-collapse: collapse;
+        outline: 1px solid #666;
+        color: #666!important;
+    }	
+
+    td{
+        padding: 5px 10px;
+    }
+
+    th{
+        background: #48bdc5; 
+        padding: 5px 10px;
+    }
+
+    td:hover{
+        background: #c7d9ef;
+        color: black;
+    }

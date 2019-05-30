@@ -13,10 +13,23 @@ pass_adm varchar(8) NOT NULL, /*contraseña del administrativo*/
 PRIMARY KEY(id_adm)
 )ENGINE=InnoDB;
 
+
 DELIMITER //
-CREATE TRIGGER admin_to_login AFTER INSERT ON administrativos FOR EACH ROW
+CREATE TRIGGER ins_adm_login AFTER INSERT ON administrativos FOR EACH ROW
 BEGIN
-	INSERT INTO login (perfil, emails, passwords) VALUES ("adm", NEW.email_adm, NEW.pass_adm);
+	INSERT INTO login (ids, perfiles, emails, passwords) VALUES (NEW.id_adm,"adm", NEW.email_adm, NEW.pass_adm);
+END; //
+
+DELIMITER //
+CREATE TRIGGER del_adm_login AFTER DELETE ON administrativos FOR EACH ROW
+BEGIN
+	DELETE FROM login WHERE (ids=OLD.id_adm AND perfiles="adm");
+END; //
+
+DELIMITER //
+CREATE TRIGGER upd_adm_login AFTER UPDATE ON administrativos FOR EACH ROW
+BEGIN
+	UPDATE login SET emails=NEW.email_adm, passwords=NEW.pass_adm WHERE (ids=OLD.id_adm AND perfiles="adm");
 END; //
 
 desc administrativos;

@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.doctores.model.Doctor;
 
 /**
  * Servlet implementation class ReadDoc
@@ -27,7 +30,8 @@ public class ReadDoc extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html charset='utf-8'");
+		
+		ArrayList<Doctor> listaDoctores=new ArrayList<Doctor>();
 		
 		//String url="jdbc:mysql://localhost:3306/lifehelper?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		Properties props=new Properties();
@@ -71,46 +75,25 @@ public class ReadDoc extends HttpServlet {
 			
 			rs= pstmnt.executeQuery();
 			
-			RequestDispatcher rd=request.getRequestDispatcher("administraDoc.html");
-			
-			salida.append("<table>");
-			
-			salida.append("<td> Id doctor </td>");
-			salida.append("<td> Nombre  </td>");
-			salida.append("<td> Apellidos </td>");
-			salida.append("<td> Cedula profesional</td>");
-			salida.append("<td> Sexo </td>");
-			salida.append("<td> Domicilio </td>");
-			salida.append("<td> Telefono </td>");
-			salida.append("<td> Email</td>");
-
-
-			
-			salida.append("</tr>");
-
 			while(rs.next()) {
+				listaDoctores.add(new Doctor(
+						rs.getInt("id_doc"),
+						rs.getString("nombre_doc"),
+						rs.getString("apellidos_doc"),
+						rs.getString("cedula_doc"),
+						rs.getString("sexo_doc"), 
+						rs.getString("domicilio_doc"), 
+						rs.getString("telefono_doc"),
+						rs.getString("email_doc")
+							)
+						);
+				}
+			
+				RequestDispatcher rd=request.getRequestDispatcher("administraDoc.jsp");
+				request.setAttribute("listaDoctores", listaDoctores);
 				
-				salida.append("<tr>");
-					salida.append("<td>"+rs.getInt("id_doc")+"</td>");
-					salida.append("<td>"+rs.getString("nombre_doc")+"</td>");
-	
-					salida.append("<td>"+rs.getString("apellidos_doc")+"</td>");
-					salida.append("<td>"+rs.getInt("cedula_doc")+"</td>");
-					
-					salida.append("<td>"+rs.getString("sexo_doc")+"</td>");
-					salida.append("<td>"+rs.getString("domicilio_doc")+"</td>");
-					
-					salida.append("<td>"+rs.getString("telefono_doc")+"</td>");
-					salida.append("<td>"+rs.getString("email_doc")+"</td>");
-
+				rd.forward(request, response);
 				
-				salida.append("</tr>");
-			
-			
-			}
-			salida.append("</table>");
-			rd.include(request, response);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
